@@ -73,7 +73,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Xem danh s&#xe1;ch ch&#x1b0;a &#x111;&#xf3;ng BHXH "/>
+        <Property name="text" type="java.lang.String" value="Xem danh s&#xe1;ch &#x111;&#xf3;ng BHXH "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton5">

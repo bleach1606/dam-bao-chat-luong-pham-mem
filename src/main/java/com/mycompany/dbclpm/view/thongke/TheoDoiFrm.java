@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.dbclpm.view;
+package com.mycompany.dbclpm.view.thongke;
 
 /**
  *
@@ -39,7 +39,7 @@ public class TheoDoiFrm extends javax.swing.JFrame {
 
         jButton2.setText("Xem tổ chức tham gia BHXH bắt buộc/ cá nhân tham gia BHXH tự nguyện");
 
-        jButton3.setText("Xem danh sách chưa đóng BHXH ");
+        jButton3.setText("Xem danh sách đóng BHXH ");
 
         jButton5.setText("Huỷ bỏ");
 
