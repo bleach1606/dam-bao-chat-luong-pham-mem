@@ -83,7 +83,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Theo d&#xf5;i danh s&#xe1;ch"/>
+        <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n lo&#x1ea1;i theo d&#xf5;i"/>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.ComponentChooserEditor">

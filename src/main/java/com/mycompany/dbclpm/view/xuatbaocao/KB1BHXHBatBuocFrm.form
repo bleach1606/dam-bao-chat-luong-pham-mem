@@ -75,12 +75,12 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="T&#x1ed5;ng s&#x1ed1; lao &#x111;&#x1ed9;ng :"/>
+        <Property name="text" type="java.lang.String" value="T&#x1ed5;ng s&#x1ed1; &#x111;&#x1a1;n v&#x1ecb; tham gia :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0 ng&#x1b0;&#x1edd;i"/>
+        <Property name="text" type="java.lang.String" value="0 &#x111;&#x1a1;n v&#x1ecb;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">

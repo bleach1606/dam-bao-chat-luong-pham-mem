@@ -78,13 +78,25 @@
         <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="6" rowCount="0">
-                <Column editable="true" title="STT" type="java.lang.Object"/>
-                <Column editable="true" title="M&#xe3; S&#x1ed1; BH" type="java.lang.Object"/>
-                <Column editable="true" title="H&#x1ecd; T&#xea;n" type="java.lang.Object"/>
-                <Column editable="true" title="CMND" type="java.lang.Object"/>
-                <Column editable="true" title="Ng&#xe0;y sinh" type="java.lang.Object"/>
-                <Column editable="true" title="Ng&#xe0;y tham gia" type="java.lang.Object"/>
+              <Table columnCount="6" rowCount="1">
+                <Column editable="true" title="STT" type="java.lang.Object">
+                  <Data value="1"/>
+                </Column>
+                <Column editable="true" title="M&#xe3; S&#x1ed1; BH" type="java.lang.Object">
+                  <Data value="BH01"/>
+                </Column>
+                <Column editable="true" title="H&#x1ecd; T&#xea;n" type="java.lang.Object">
+                  <Data value="Nguyen Van A"/>
+                </Column>
+                <Column editable="true" title="CMND" type="java.lang.Object">
+                  <Data value="0987644"/>
+                </Column>
+                <Column editable="true" title="Ng&#xe0;y sinh" type="java.lang.Object">
+                  <Data value="16/06/2000"/>
+                </Column>
+                <Column editable="true" title="Ng&#xe0;y tham gia" type="java.lang.Object">
+                  <Data value="16/06/2009"/>
+                </Column>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

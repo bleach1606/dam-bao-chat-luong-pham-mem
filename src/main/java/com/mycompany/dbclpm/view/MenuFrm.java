@@ -48,7 +48,7 @@ public class MenuFrm extends javax.swing.JFrame {
 
         jButton4.setText("Huỷ bỏ");
 
-        jLabel1.setText("menu");
+        jLabel1.setText("Trang chủ");
         jLabel1.setSize(new java.awt.Dimension(45, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

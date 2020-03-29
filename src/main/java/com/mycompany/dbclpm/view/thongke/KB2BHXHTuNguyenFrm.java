@@ -53,7 +53,8 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"1", "06/2016", "06/2017", "Giám đốc", "20.000.000"},
+                {null, null, null, null, null}
             },
             new String [] {
                 "STT", "Từ tháng", "Đến tháng", "Chức vụ", "Mức lương"
@@ -66,7 +67,7 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
 
         jLabel6.setText("Tổng số tháng tham gia :");
 
-        jLabel7.setText("0 tháng");
+        jLabel7.setText("12 tháng");
 
         jButton1.setText("Xác nhận");
 

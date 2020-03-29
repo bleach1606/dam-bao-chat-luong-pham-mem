@@ -39,7 +39,8 @@ public class KB1BHXHBatBuocFrm extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"1", "BHDV01", "1000", "19/07/2019"},
+                {null, null, null, null}
             },
             new String [] {
                 "STT", "Mã đơn vị", "Số lao động", "Ngày tham gia"

@@ -37,9 +37,9 @@ public class KB1BHXHBatBuocFrm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setText("Tổng số lao động :");
+        jLabel2.setText("Tổng số đơn vị tham gia :");
 
-        jLabel3.setText("0 người");
+        jLabel3.setText("0 đơn vị");
 
         jButton1.setText("Xác nhận");
 
