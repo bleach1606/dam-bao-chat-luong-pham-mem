@@ -5,6 +5,9 @@
  */
 package com.mycompany.dbclpm.view;
 
+import com.mycompany.dbclpm.model.User;
+import com.mycompany.dbclpm.view.cauhinh.CauHinhFrm;
+
 /**
  *
  * @author v
@@ -14,8 +17,11 @@ public class MenuFrm extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    public MenuFrm() {
+    private User user;
+    public MenuFrm(User user) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        user = user;
     }
 
     /**
@@ -47,6 +53,11 @@ public class MenuFrm extends javax.swing.JFrame {
         });
 
         jButton4.setText("Huỷ bỏ");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Trang chủ");
         jLabel1.setSize(new java.awt.Dimension(45, 20));
@@ -89,7 +100,17 @@ public class MenuFrm extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        CauHinhFrm cauHinhFrm = new CauHinhFrm();
+        cauHinhFrm.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        LoginFrm loginFrm = new LoginFrm();
+        loginFrm.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,7 +145,7 @@ public class MenuFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuFrm().setVisible(true);
+                new MenuFrm(null).setVisible(true);
             }
         });
     }

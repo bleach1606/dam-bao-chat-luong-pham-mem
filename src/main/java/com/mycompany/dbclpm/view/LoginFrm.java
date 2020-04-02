@@ -5,18 +5,28 @@
  */
 package com.mycompany.dbclpm.view;
 
+import com.mycompany.dbclpm.DAO.UserDAO;
+import com.mycompany.dbclpm.model.User;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author v
  */
-public class DangNhapFrm extends javax.swing.JFrame {
+public class LoginFrm extends javax.swing.JFrame {
 
     /**
-     * Creates new form NewJFrame1
+     * Creates new form LoginFrm
      */
-   
-    public DangNhapFrm() {
+    
+    private User user;
+    private UserDAO userDAO;
+    
+    public LoginFrm() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        
+        userDAO = new UserDAO();
     }
 
     /**
@@ -38,9 +48,9 @@ public class DangNhapFrm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Username :");
+        jLabel1.setText("Tài khoản :");
 
-        jLabel2.setText("Password :");
+        jLabel2.setText("Mật khẩu:");
 
         jLabel3.setText("Đăng Nhập");
 
@@ -67,7 +77,7 @@ public class DangNhapFrm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
+                .addContainerGap(74, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnHuyBo)
@@ -108,20 +118,34 @@ public class DangNhapFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHuyBo)
                     .addComponent(btnDangNhap))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnHuyBoActionPerformed
-
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
-        
+        if(txtUsername.getText().length() > 0 && txtPassWord.getText().length() > 0) {
+            user = userDAO.CheckUser(txtUsername.getText(), txtPassWord.getText());
+            if(user == null) {
+                JOptionPane.showMessageDialog(this, "Tên đăng nhập hoặc mật khẩu không đúng.");
+            }
+            else {
+                MenuFrm menuFrm = new MenuFrm(user);
+                this.dispose();
+                menuFrm.setVisible(true);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin.");
+        }
     }//GEN-LAST:event_btnDangNhapActionPerformed
+
+    private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnHuyBoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,23 +164,20 @@ public class DangNhapFrm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DangNhapFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DangNhapFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DangNhapFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DangNhapFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DangNhapFrm().setVisible(true);
+                new LoginFrm().setVisible(true);
             }
         });
     }

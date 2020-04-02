@@ -5,6 +5,12 @@
  */
 package com.mycompany.dbclpm.view.cauhinh;
 
+import com.mycompany.dbclpm.DAO.TiLEBHXHDAO;
+import com.mycompany.dbclpm.model.TiLeBHXH;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author v
@@ -14,10 +20,36 @@ public class TiLeDongBHXHFrm extends javax.swing.JFrame {
     /**
      * Creates new form TiLeDongBHXHFrm
      */
+    
+    private DefaultTableModel model;
+    private TiLEBHXHDAO tileBHXHDAO;
+    private static int sua;
+    private ArrayList<TiLeBHXH> list;
+    
     public TiLeDongBHXHFrm() {
         initComponents();
+        sua = 0;
+        this.setLocationRelativeTo(null);
+        model = (DefaultTableModel) jTable1.getModel();
+        tileBHXHDAO = new TiLEBHXHDAO();
+        list = tileBHXHDAO.getList();
+        filltblNguyenLieu(list);
     }
 
+        
+    private void filltblNguyenLieu(ArrayList<TiLeBHXH> list){
+        model.setNumRows(0);
+        for(TiLeBHXH x: list){
+//            System.out.println(x.toString());
+            model.addRow(new Object[]{
+                x.getLoaiBHXH(),
+                x.getCaNhan(),
+                x.getToChuc(),
+                x.getTong(),
+            });
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,9 +69,9 @@ public class TiLeDongBHXHFrm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtLoai = new javax.swing.JTextField();
+        txtCaNhan = new javax.swing.JTextField();
+        txtToChuc = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,12 +91,32 @@ public class TiLeDongBHXHFrm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Sửa");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Xoá");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Cập nhật");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Huỷ bỏ");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Loại BHXH :");
 
@@ -102,9 +154,9 @@ public class TiLeDongBHXHFrm extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))))
+                            .addComponent(txtLoai)
+                            .addComponent(txtCaNhan)
+                            .addComponent(txtToChuc, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,15 +169,15 @@ public class TiLeDongBHXHFrm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCaNhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtToChuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -138,6 +190,71 @@ public class TiLeDongBHXHFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        sua = 1;
+        int i = jTable1.getSelectedRow();
+        if (i == -1 || sua != 1) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn vùng cần sửa hoặc nhập dữ liệu sửa");
+            return;
+        }
+        TiLeBHXH tiLe = list.get(i);
+        txtCaNhan.setText(String.valueOf(tiLe.getCaNhan()));
+        txtLoai.setText(tiLe.getLoaiBHXH());
+        txtToChuc.setText(String.valueOf(tiLe.getToChuc()));
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        clearData(); sua = 0;
+        int i = jTable1.getSelectedRow();
+        if (i == -1 || sua != 1) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn vùng cần sửa hoặc nhập dữ liệu sửa");
+            return;
+        }
+        TiLeBHXH tile = list.get(i);
+        tileBHXHDAO.deleteML(tile.getId());
+        list.remove(i);
+        filltblNguyenLieu(list);
+        JOptionPane.showMessageDialog(this, "Xoá thành công !!!");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int i = jTable1.getSelectedRow();
+        if (i == -1 || sua != 1) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn vùng cần sửa hoặc nhập dữ liệu sửa");
+            return;
+        }
+        try {
+            TiLeBHXH tile = list.get(i);
+            tile.setCaNhan(Float.parseFloat(txtCaNhan.getText()));
+            tile.setToChuc(Float.parseFloat(txtToChuc.getText()));
+            tile.setLoaiBHXH(txtLoai.getText());
+            tile.setTong(tile.getCaNhan() + tile.getToChuc());
+            tileBHXHDAO.updateML(tile);
+            list.set(i, tile);
+            filltblNguyenLieu(list);
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(this, "Dữ liệu nhập sai định dạng : " + e.getMessage());
+        }
+        clearData();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        CauHinhFrm cauHinhFrm = new CauHinhFrm();
+        cauHinhFrm.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void clearData() {
+        txtCaNhan.setText("");
+        txtLoai.setText("");
+        txtToChuc.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -184,8 +301,8 @@ public class TiLeDongBHXHFrm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtCaNhan;
+    private javax.swing.JTextField txtLoai;
+    private javax.swing.JTextField txtToChuc;
     // End of variables declaration//GEN-END:variables
 }
