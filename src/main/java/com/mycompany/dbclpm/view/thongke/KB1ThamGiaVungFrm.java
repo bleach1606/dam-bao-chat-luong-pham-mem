@@ -6,7 +6,11 @@
 package com.mycompany.dbclpm.view.thongke;
 
 import com.mycompany.dbclpm.DAO.VungDAO;
+import com.mycompany.dbclpm.model.Vung;
+import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,20 +23,25 @@ public class KB1ThamGiaVungFrm extends javax.swing.JFrame {
      */
     
     private VungDAO vungDAO;
+    private ArrayList<Vung> list;    
     
     public KB1ThamGiaVungFrm() {
         initComponents();
         this.setLocationRelativeTo(null);
         jcb1.removeAllItems();
         jcb1.addItem("Chọn quận/huyện");
-        
+        vungDAO = new VungDAO();
+        list = vungDAO.getList();
+        for(Vung x : list) {
+            jcb1.addItem(x.getVung());
+        }
         jcb.removeAllItems();
         jcb.addItem("Chọn loại bảo hiểm");
         jcb.addItem("BHXH tự nguyện");
         jcb.addItem("BHXH bắt buộc");
         
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,8 +75,18 @@ public class KB1ThamGiaVungFrm extends javax.swing.JFrame {
         });
 
         jButton1.setText("Huỷ bỏ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Trở lại");
+        jButton2.setText("Xác nhận");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jcb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcb1.addActionListener(new java.awt.event.ActionListener() {
@@ -98,9 +117,9 @@ public class KB1ThamGiaVungFrm extends javax.swing.JFrame {
                                 .addComponent(jcb1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(75, 75, 75)
-                        .addComponent(jButton2)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -119,9 +138,9 @@ public class KB1ThamGiaVungFrm extends javax.swing.JFrame {
                     .addComponent(jcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -134,6 +153,32 @@ public class KB1ThamGiaVungFrm extends javax.swing.JFrame {
     private void jcb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcb1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        TheoDoiFrm frm = new TheoDoiFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        System.out.println(jcb1.getSelectedIndex());
+        if(jcb1.getSelectedIndex() == 0 || jcb.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn vùng hoặc loại bảo hiểm !!!");
+            return;
+        }
+        this.dispose();
+        int k = jcb1.getSelectedIndex();
+        if( jcb.getSelectedIndex() == 1) {
+            KB1BHXHTuNguyenFrm frm = new KB1BHXHTuNguyenFrm(list.get(k-1).getId());
+            frm.setVisible(true);
+        }
+        else {
+            KB1BHXHBatBuocFrm frm = new KB1BHXHBatBuocFrm(list.get(k-1).getId());
+            frm.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

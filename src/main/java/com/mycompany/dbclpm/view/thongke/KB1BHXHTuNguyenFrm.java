@@ -5,6 +5,12 @@
  */
 package com.mycompany.dbclpm.view.thongke;
 
+import com.mycompany.dbclpm.DAO.MemberDAO;
+import com.mycompany.dbclpm.model.CHMucLuongBHXH;
+import com.mycompany.dbclpm.model.Member;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author v
@@ -14,11 +20,35 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
     /**
      * Creates new form BHXHTuNguyenFrm
      */
-    public KB1BHXHTuNguyenFrm() {
+    
+    private DefaultTableModel model;
+    private ArrayList<Member> list;
+    private  MemberDAO memberDAO;
+    public KB1BHXHTuNguyenFrm(int k) {
         initComponents();
         this.setLocationRelativeTo(null);
+        memberDAO = new MemberDAO();
+        list = memberDAO.getList(k);
+        model = (DefaultTableModel) jTable1.getModel();
+        filltblNguyenLieu(list);
     }
 
+    private void filltblNguyenLieu(ArrayList<Member> list){
+        model.setNumRows(0);
+        int i = 1;
+        for(Member x: list){
+//            System.out.println(x.toString());
+            model.addRow(new Object[]{
+                i++,
+                x.getIdBHXH(),
+                x.getName(),
+                x.getIdNumber(),
+                x.getBirthday(),
+                x.getJoinDate(),
+            });
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,11 +80,23 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(20);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(40);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(70);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(85);
         }
 
         jButton1.setText("Xác nhận");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Huỷ bỏ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,6 +135,20 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB1ThamGiaVungFrm frm = new KB1ThamGiaVungFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB1ThamGiaVungFrm frm = new KB1ThamGiaVungFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -124,7 +180,7 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KB1BHXHTuNguyenFrm().setVisible(true);
+                new KB1BHXHTuNguyenFrm(1).setVisible(true);
             }
         });
     }

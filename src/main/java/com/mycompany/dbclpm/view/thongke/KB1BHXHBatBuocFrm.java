@@ -5,6 +5,12 @@
  */
 package com.mycompany.dbclpm.view.thongke;
 
+import com.mycompany.dbclpm.DAO.CompanyDAO;
+import com.mycompany.dbclpm.model.Company;
+import com.mycompany.dbclpm.model.Member;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author v
@@ -14,9 +20,32 @@ public class KB1BHXHBatBuocFrm extends javax.swing.JFrame {
     /**
      * Creates new form BHXNBatBuocFrm
      */
-    public KB1BHXHBatBuocFrm() {
+    private DefaultTableModel model;
+    private ArrayList<Company> list;
+    private  CompanyDAO companyDAO;
+    
+    public KB1BHXHBatBuocFrm(int k) {
+        System.out.println("start !!!");
         initComponents();
         this.setLocationRelativeTo(null);
+        companyDAO = new CompanyDAO();
+        list = companyDAO.getList(k);
+        model = (DefaultTableModel) jTable1.getModel();
+        filltblNguyenLieu(list);
+    }
+    
+    private void filltblNguyenLieu(ArrayList<Company> list){
+        model.setNumRows(0);
+        int i = 1;
+        for(Company x: list){
+//            System.out.println(x.toString());
+            model.addRow(new Object[]{
+                i++,
+                x.getIdBHXH(),
+                x.getWorkers(),
+                x.getJoinDate(),
+            });
+        }
     }
 
     /**
@@ -50,8 +79,18 @@ public class KB1BHXHBatBuocFrm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Xác nhận");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Huỷ bỏ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,10 +105,10 @@ public class KB1BHXHBatBuocFrm extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                        .addGap(113, 113, 113)
                         .addComponent(jButton1)
-                        .addGap(120, 120, 120)
-                        .addComponent(jButton2)))
+                        .addGap(94, 94, 94)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -79,15 +118,29 @@ public class KB1BHXHBatBuocFrm extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB1ThamGiaVungFrm frm = new KB1ThamGiaVungFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB1ThamGiaVungFrm frm = new KB1ThamGiaVungFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,7 +179,7 @@ public class KB1BHXHBatBuocFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KB1BHXHBatBuocFrm().setVisible(true);
+                new KB1BHXHBatBuocFrm(1).setVisible(true);
             }
         });
     }
