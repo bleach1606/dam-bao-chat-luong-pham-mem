@@ -16,6 +16,7 @@ public class KB3XemDSDongBHXH extends javax.swing.JFrame {
      */
     public KB3XemDSDongBHXH() {
         initComponents();
+        this.setLocationRelativeTo(null);
         jcb.removeAllItems();
         jcb.addItem("BHXH tự nguyện");
         jcb.addItem("BHXH bắt buộc");

@@ -16,6 +16,7 @@ public class KB2ChiTietFrm extends javax.swing.JFrame {
      */
     public KB2ChiTietFrm() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

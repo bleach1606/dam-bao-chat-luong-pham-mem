@@ -15,7 +15,7 @@ public class DAO {
     final private String host = "127.0.0.1";
     final private String user = "root";
     final private String passwd = "";
-    final private String database = "db";
+    final private String database = "dbb";
 
     public DAO(Connection connect, Statement statement, PreparedStatement preparedStatement, ResultSet resultSet) {
         this.connect = connect;

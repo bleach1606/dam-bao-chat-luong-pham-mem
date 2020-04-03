@@ -16,6 +16,7 @@ public class KB2ChonLoaiFrm extends javax.swing.JFrame {
      */
     public KB2ChonLoaiFrm() {
         initComponents();
+        this.setLocationRelativeTo(null);
         jComboBox1.removeAllItems();
         jComboBox1.addItem("BHXH tự nguyện");
         jComboBox1.addItem("BHXH bắt buộc");

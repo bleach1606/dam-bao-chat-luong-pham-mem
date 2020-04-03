@@ -16,6 +16,7 @@ public class KB1BHXHBatBuocFrm extends javax.swing.JFrame {
      */
     public KB1BHXHBatBuocFrm() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

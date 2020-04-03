@@ -16,6 +16,7 @@ public class KB3BHXHTuNguyenFrm extends javax.swing.JFrame {
      */
     public KB3BHXHTuNguyenFrm() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

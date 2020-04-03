@@ -16,6 +16,7 @@ public class KB2ThamGiaBHXHFrm extends javax.swing.JFrame {
      */
     public KB2ThamGiaBHXHFrm() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

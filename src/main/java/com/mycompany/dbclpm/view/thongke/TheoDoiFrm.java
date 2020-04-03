@@ -5,6 +5,8 @@
  */
 package com.mycompany.dbclpm.view.thongke;
 
+import com.mycompany.dbclpm.view.MenuFrm;
+
 /**
  *
  * @author v
@@ -16,6 +18,7 @@ public class TheoDoiFrm extends javax.swing.JFrame {
      */
     public TheoDoiFrm() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -36,12 +39,22 @@ public class TheoDoiFrm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Xem danh sách tham gia theo vùng");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Xem tổ chức tham gia BHXH bắt buộc/ cá nhân tham gia BHXH tự nguyện");
 
         jButton3.setText("Xem danh sách đóng BHXH ");
 
         jButton5.setText("Huỷ bỏ");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Chọn loại theo dõi");
 
@@ -83,6 +96,20 @@ public class TheoDoiFrm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB1ThamGiaVungFrm frm = new KB1ThamGiaVungFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        MenuFrm frm = new MenuFrm(null);
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

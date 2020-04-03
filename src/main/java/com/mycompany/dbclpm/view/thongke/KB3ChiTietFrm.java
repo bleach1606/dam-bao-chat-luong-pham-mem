@@ -16,6 +16,7 @@ public class KB3ChiTietFrm extends javax.swing.JFrame {
      */
     public KB3ChiTietFrm() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
