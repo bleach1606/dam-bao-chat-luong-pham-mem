@@ -6,6 +6,7 @@
 package com.mycompany.dbclpm.view.thongke;
 
 import com.mycompany.dbclpm.view.MenuFrm;
+import javax.crypto.AEADBadTagException;
 
 /**
  *
@@ -46,8 +47,18 @@ public class TheoDoiFrm extends javax.swing.JFrame {
         });
 
         jButton2.setText("Xem tổ chức tham gia BHXH bắt buộc/ cá nhân tham gia BHXH tự nguyện");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Xem danh sách đóng BHXH ");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Huỷ bỏ");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +120,20 @@ public class TheoDoiFrm extends javax.swing.JFrame {
         MenuFrm frm = new MenuFrm(null);
         frm.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB2ChonLoaiFrm frm = new KB2ChonLoaiFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB3XemDSDongBHXH frm = new KB3XemDSDongBHXH();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -24,6 +24,7 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
     private DefaultTableModel model;
     private ArrayList<Member> list;
     private  MemberDAO memberDAO;
+    
     public KB1BHXHTuNguyenFrm(int k) {
         initComponents();
         this.setLocationRelativeTo(null);

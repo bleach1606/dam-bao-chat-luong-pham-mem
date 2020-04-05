@@ -5,6 +5,13 @@
  */
 package com.mycompany.dbclpm.view.xuatbaocao;
 
+import com.mycompany.dbclpm.DAO.CompanyDAO;
+import com.mycompany.dbclpm.DAO.VungDAO;
+import com.mycompany.dbclpm.model.Company;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author v
@@ -14,8 +21,34 @@ public class KB1BHXHBatBuocFrm extends javax.swing.JFrame {
     /**
      * Creates new form KB1BHXHBatBuocFrm
      */
-    public KB1BHXHBatBuocFrm() {
+    
+    private DefaultTableModel model;
+    private ArrayList<Company> list;
+    private CompanyDAO companyDAO;
+    private VungDAO vungDAO;
+    
+    public KB1BHXHBatBuocFrm(ArrayList<Company> listC) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        list = listC;
+        vungDAO = new VungDAO();
+        model = (DefaultTableModel) jTable1.getModel();
+        filltblNguyenLieu(list);
+    }
+    
+    private void filltblNguyenLieu(ArrayList<Company> list){
+        model.setNumRows(0);
+        int i = 1;
+        for(Company x: list){
+//            System.out.println(x.toString());
+            model.addRow(new Object[]{
+                i++,
+                x.getIdBHXH(),
+                x.getName(),
+                x.getWorkers(),
+                vungDAO.getById(x.getIdVung()).getVung(),
+            });
+        }
     }
 
     /**
@@ -42,8 +75,18 @@ public class KB1BHXHBatBuocFrm extends javax.swing.JFrame {
         jLabel3.setText("0 đơn vị");
 
         jButton1.setText("Xác nhận");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Huỷ bỏ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,6 +149,24 @@ public class KB1BHXHBatBuocFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int k = jTable1.getSelectedRow();
+        System.out.println(k);
+        if (k < 0) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn đơn vị xem chi tiết");
+            return;
+        }
+        KB1ChiTietFrm frm = new KB1ChiTietFrm(k , list);
+        frm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -136,7 +197,7 @@ public class KB1BHXHBatBuocFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KB1BHXHBatBuocFrm().setVisible(true);
+                new KB1BHXHBatBuocFrm(null).setVisible(true);
             }
         });
     }

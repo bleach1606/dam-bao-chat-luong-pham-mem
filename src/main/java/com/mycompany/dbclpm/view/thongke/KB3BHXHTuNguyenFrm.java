@@ -5,6 +5,11 @@
  */
 package com.mycompany.dbclpm.view.thongke;
 
+import com.mycompany.dbclpm.DAO.VungDAO;
+import com.mycompany.dbclpm.model.Member;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author v
@@ -14,11 +19,35 @@ public class KB3BHXHTuNguyenFrm extends javax.swing.JFrame {
     /**
      * Creates new form KB3BHXHTuNguyrnFrm
      */
-    public KB3BHXHTuNguyenFrm() {
+    
+    private ArrayList<Member> list;
+    private DefaultTableModel model;
+    private VungDAO vungDAO;
+    
+    public KB3BHXHTuNguyenFrm(ArrayList<Member> list) {
         initComponents();
         this.setLocationRelativeTo(null);
+        list = list;
+        vungDAO = new VungDAO();
+        model = (DefaultTableModel) jTable1.getModel();
+        filltblNguyenLieu(list);
     }
 
+    private void filltblNguyenLieu(ArrayList<Member> list){
+        model.setNumRows(0);
+        int stt = 1;
+        for(Member x: list){
+//            System.out.println(x.toString());
+            model.addRow(new Object[]{
+                stt++,
+                x.getName(),
+                x.getIdNumber(),
+                x.getIdBHXH(),
+                vungDAO.getById(x.getIdVung()).getVung(),
+            });
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,11 +67,11 @@ public class KB3BHXHTuNguyenFrm extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "STT", "Họ tên", "Mã số BH", "Địa chỉ", "Số tiền đóng", "Tình trạng"
+                "STT", "Họ tên", "CMND", "Mã số BH", "Địa chỉ"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -53,8 +82,18 @@ public class KB3BHXHTuNguyenFrm extends javax.swing.JFrame {
         jLabel1.setText("Danh sách đóng Bảo hiểm xã hội tự nguyện");
 
         jButton1.setText("Xác nhận");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Huỷ bỏ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,6 +132,18 @@ public class KB3BHXHTuNguyenFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB3XemDSDongBHXH frm = new KB3XemDSDongBHXH();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -124,7 +175,7 @@ public class KB3BHXHTuNguyenFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KB3BHXHTuNguyenFrm().setVisible(true);
+                new KB3BHXHTuNguyenFrm(null).setVisible(true);
             }
         });
     }

@@ -5,6 +5,11 @@
  */
 package com.mycompany.dbclpm.view.thongke;
 
+import com.mycompany.dbclpm.model.Member;
+import com.mycompany.dbclpm.model.Voluntary;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author v
@@ -14,9 +19,31 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
     /**
      * Creates new form KB2BHXHTuNguyenFrm
      */
-    public KB2BHXHTuNguyenFrm() {
+    
+    private ArrayList<Voluntary> list;
+    private DefaultTableModel model;
+    
+    public KB2BHXHTuNguyenFrm(ArrayList<Voluntary> listV) {
         initComponents();
         this.setLocationRelativeTo(null);
+        list = listV;
+        model = (DefaultTableModel) jTable1.getModel();
+        filltblNguyenLieu(list);
+        String temp = String.valueOf(list.size()) + " người";
+        jLB.setText(temp);
+    }
+
+    private void filltblNguyenLieu(ArrayList<Voluntary> list){
+        model.setNumRows(0);
+        int i = 1;
+        for(Voluntary x: list){
+//            System.out.println(x.toString());
+            model.addRow(new Object[]{
+                i++,
+                x.getTime(),
+                x.getSalary(),
+            });
+        }
     }
 
     /**
@@ -36,7 +63,7 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLB = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -54,21 +81,18 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "06/2016", "06/2017", "Giám đốc", "20.000.000"},
-                {null, null, null, null, null}
+                {"1", "06/2016", "20.000.000"},
+                {null, null, null}
             },
             new String [] {
-                "STT", "Từ tháng", "Đến tháng", "Chức vụ", "Mức lương"
+                "STT", "Tháng", "Mức lương"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(40);
-        }
 
         jLabel6.setText("Tổng số tháng tham gia :");
 
-        jLabel7.setText("12 tháng");
+        jLB.setText("12 tháng");
 
         jButton1.setText("Xác nhận");
 
@@ -98,7 +122,7 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(40, 40, 40)
-                                .addComponent(jLabel7)))))
+                                .addComponent(jLB)))))
                 .addContainerGap(53, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(113, 113, 113)
@@ -125,7 +149,7 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel7))
+                            .addComponent(jLB))
                         .addGap(51, 99, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -168,7 +192,7 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KB2BHXHTuNguyenFrm().setVisible(true);
+                new KB2BHXHTuNguyenFrm(null).setVisible(true);
             }
         });
     }
@@ -176,13 +200,13 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLB;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

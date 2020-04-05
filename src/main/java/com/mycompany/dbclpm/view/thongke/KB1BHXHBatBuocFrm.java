@@ -22,7 +22,7 @@ public class KB1BHXHBatBuocFrm extends javax.swing.JFrame {
      */
     private DefaultTableModel model;
     private ArrayList<Company> list;
-    private  CompanyDAO companyDAO;
+    private CompanyDAO companyDAO;
     
     public KB1BHXHBatBuocFrm(int k) {
         System.out.println("start !!!");

@@ -5,6 +5,8 @@
  */
 package com.mycompany.dbclpm.view.xuatbaocao;
 
+import com.mycompany.dbclpm.view.MenuFrm;
+
 /**
  *
  * @author v
@@ -16,6 +18,7 @@ public class XuatBaoCaoFrm extends javax.swing.JFrame {
      */
     public XuatBaoCaoFrm() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -35,6 +38,11 @@ public class XuatBaoCaoFrm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Xem báo cáo doanh số theo thời gian");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Xem báo cáo doanh số theo quận, huyện");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -46,6 +54,11 @@ public class XuatBaoCaoFrm extends javax.swing.JFrame {
         jLabel1.setText("Loại báo cáo");
 
         jButton4.setText("Huỷ bỏ");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,7 +95,24 @@ public class XuatBaoCaoFrm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        KB2LoaiDoanhSoFrm frm = new KB2LoaiDoanhSoFrm("Xem báo cáo theo quận huyện");
+        frm.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        MenuFrm frm = new MenuFrm(null);
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB1LoaiBaocaoFrm frm = new KB1LoaiBaocaoFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

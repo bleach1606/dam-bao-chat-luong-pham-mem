@@ -71,11 +71,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Xem t&#x1ed5; ch&#x1ee9;c tham gia BHXH b&#x1eaf;t bu&#x1ed9;c/ c&#xe1; nh&#xe2;n tham gia BHXH t&#x1ef1; nguy&#x1ec7;n"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Xem danh s&#xe1;ch &#x111;&#xf3;ng BHXH "/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton5">
       <Properties>

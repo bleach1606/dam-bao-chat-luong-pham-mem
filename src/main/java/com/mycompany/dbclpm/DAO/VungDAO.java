@@ -28,6 +28,24 @@ public class VungDAO extends DAO{
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public Vung getById(int id) {
+        Vung vung = new Vung();
+        String sql = "SELECT * FROM `tbl_vung` WHERE id = ?";
+        try{
+            PreparedStatement ps = connect.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            System.out.println(ps);
+            if (rs.next()) {
+                vung.setId(rs.getInt(1));
+                vung.setVung(rs.getString(2));
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return vung;
+    }
 
     public ArrayList<Vung> getList() {
         ArrayList<Vung> list = new ArrayList();

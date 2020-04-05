@@ -5,6 +5,11 @@
  */
 package com.mycompany.dbclpm.view.xuatbaocao;
 
+import com.mycompany.dbclpm.DAO.VungDAO;
+import com.mycompany.dbclpm.model.Member;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author v
@@ -14,8 +19,34 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
     /**
      * Creates new form KB1BHXHTuNguyenFrm
      */
-    public KB1BHXHTuNguyenFrm() {
+    
+    private ArrayList<Member> list;
+    private DefaultTableModel model;
+    private VungDAO vungDAO;
+    
+    public KB1BHXHTuNguyenFrm(ArrayList<Member> listm) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        list = listm;
+        vungDAO = new VungDAO();
+        filltblNguyenLieu(list);
+        String temp = String.valueOf(list.size()) + " người";
+        jcb.setText(temp);
+    }
+    
+    private void filltblNguyenLieu(ArrayList<Member> list){
+        model.setNumRows(0);
+        int i = 1;
+        for(Member x: list){
+//            System.out.println(x.toString());
+            model.addRow(new Object[]{
+                i++,
+                x.getIdBHXH(),
+                x.getName(),
+                x.getIdNumber(),
+                vungDAO.getById(x.getIdVung()).getVung(),
+            });
+        }
     }
 
     /**
@@ -31,7 +62,7 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jcb = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -58,7 +89,7 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
 
         jLabel2.setText("Tổng số người tham gia :");
 
-        jLabel3.setText("0 người");
+        jcb.setText("0 người");
 
         jButton1.setText("Xác nhận");
 
@@ -71,34 +102,34 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(161, 161, 161)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addComponent(jLabel2)
                         .addGap(31, 31, 31)
-                        .addComponent(jLabel3))
+                        .addComponent(jcb))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(141, 141, 141)
                         .addComponent(jButton1)
                         .addGap(132, 132, 132)
-                        .addComponent(jButton2)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addGap(50, 50, 50)
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jcb))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -139,7 +170,7 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KB1BHXHTuNguyenFrm().setVisible(true);
+                new KB1BHXHTuNguyenFrm(null).setVisible(true);
             }
         });
     }
@@ -149,8 +180,8 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jcb;
     // End of variables declaration//GEN-END:variables
 }

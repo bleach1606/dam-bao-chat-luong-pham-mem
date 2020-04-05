@@ -8,6 +8,7 @@ package com.mycompany.dbclpm.view;
 import com.mycompany.dbclpm.model.User;
 import com.mycompany.dbclpm.view.cauhinh.CauHinhFrm;
 import com.mycompany.dbclpm.view.thongke.TheoDoiFrm;
+import com.mycompany.dbclpm.view.xuatbaocao.XuatBaoCaoFrm;
 
 /**
  *
@@ -50,6 +51,11 @@ public class MenuFrm extends javax.swing.JFrame {
         });
 
         jButton2.setText("Báo cáo thống kê");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Cấu hình");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +130,13 @@ public class MenuFrm extends javax.swing.JFrame {
         TheoDoiFrm doiFrm = new TheoDoiFrm();
         doiFrm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        XuatBaoCaoFrm frm = new XuatBaoCaoFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

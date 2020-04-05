@@ -45,7 +45,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLB" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -80,7 +80,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLB" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="51" pref="99" max="32767" attributes="0"/>
                   </Group>
@@ -133,21 +133,13 @@
         <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="5" rowCount="2">
+              <Table columnCount="3" rowCount="2">
                 <Column editable="true" title="STT" type="java.lang.Object">
                   <Data value="1"/>
                   <Data value="null"/>
                 </Column>
-                <Column editable="true" title="T&#x1eeb; th&#xe1;ng" type="java.lang.Object">
+                <Column editable="true" title="Th&#xe1;ng" type="java.lang.Object">
                   <Data value="06/2016"/>
-                  <Data value="null"/>
-                </Column>
-                <Column editable="true" title="&#x110;&#x1ebf;n th&#xe1;ng" type="java.lang.Object">
-                  <Data value="06/2017"/>
-                  <Data value="null"/>
-                </Column>
-                <Column editable="true" title="Ch&#x1ee9;c v&#x1ee5;" type="java.lang.Object">
-                  <Data value="Gi&#xe1;m &#x111;&#x1ed1;c"/>
                   <Data value="null"/>
                 </Column>
                 <Column editable="true" title="M&#x1ee9;c l&#x1b0;&#x1a1;ng" type="java.lang.Object">
@@ -158,16 +150,6 @@
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="40" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -197,7 +179,7 @@
         <Property name="text" type="java.lang.String" value="T&#x1ed5;ng s&#x1ed1; th&#xe1;ng tham gia :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="jLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="12 th&#xe1;ng"/>
       </Properties>

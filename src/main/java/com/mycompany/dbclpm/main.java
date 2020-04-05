@@ -5,10 +5,15 @@
  */
 package com.mycompany.dbclpm;
 
+import com.mycompany.dbclpm.view.LoginFrm;
+
 /**
  *
  * @author v
  */
 public class main {
-    
+    public static void main(String[] args) {
+        LoginFrm frm = new LoginFrm();
+        frm.setVisible(true);
+    }
 }

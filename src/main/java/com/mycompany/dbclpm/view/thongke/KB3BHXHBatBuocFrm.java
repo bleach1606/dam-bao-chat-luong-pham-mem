@@ -5,6 +5,12 @@
  */
 package com.mycompany.dbclpm.view.thongke;
 
+import com.mycompany.dbclpm.DAO.VungDAO;
+import com.mycompany.dbclpm.model.Company;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author v
@@ -14,11 +20,33 @@ public class KB3BHXHBatBuocFrm extends javax.swing.JFrame {
     /**
      * Creates new form KB3BHXHBatBuocFrm
      */
-    public KB3BHXHBatBuocFrm() {
+    private ArrayList<Company> list;
+    private DefaultTableModel model;
+    private VungDAO vungDAO;
+    
+    public KB3BHXHBatBuocFrm(ArrayList<Company> list1) {
         initComponents();
         this.setLocationRelativeTo(null);
+        list = list1;
+        vungDAO = new VungDAO();
+        model = (DefaultTableModel) jTable1.getModel();
+        filltblNguyenLieu(list);
     }
 
+    private void filltblNguyenLieu(ArrayList<Company> list){
+        model.setNumRows(0);
+        int stt = 1;
+        for(Company x: list){
+//            System.out.println(x.toString());
+            model.addRow(new Object[]{
+                stt++,
+                x.getName(),
+                x.getIdBHXH(),
+                vungDAO.getById(x.getIdVung()).getVung(),
+            });
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,23 +66,30 @@ public class KB3BHXHBatBuocFrm extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "STT", "Mã đơn vị", "Địa chỉ", "Từ ngày", "Đến ngày", "Số tiền đóng", "Tình trạng"
+                "STT", "Tên đơn vị", "Mã đơn vị", "Địa chỉ"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(4).setHeaderValue("Đến ngày");
-        }
 
         jLabel1.setText("Danh sách đóng Bảo hiểm xã hội tự nguyện");
 
         jButton1.setText("Xác nhận");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Huỷ bỏ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,6 +128,27 @@ public class KB3BHXHBatBuocFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int i = jTable1.getSelectedRow();
+        if( i < 0) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn đơn vị cần xem chi tiết.");
+        }
+        else {
+            System.out.println(list.get(i).toString());
+            this.dispose();
+            KB3ChiTietFrm frm = new KB3ChiTietFrm(list.get(i), list);
+            frm.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB3XemDSDongBHXH frm = new KB3XemDSDongBHXH();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -123,7 +179,7 @@ public class KB3BHXHBatBuocFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KB3BHXHBatBuocFrm().setVisible(true);
+                new KB3BHXHBatBuocFrm(null).setVisible(true);
             }
         });
     }

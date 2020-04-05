@@ -5,19 +5,78 @@
  */
 package com.mycompany.dbclpm.view.thongke;
 
+import com.mycompany.dbclpm.DAO.MemberDAO;
+import com.mycompany.dbclpm.DAO.VungDAO;
+import com.mycompany.dbclpm.DTO.KB2BHXHBatBuoc;
+import com.mycompany.dbclpm.model.Company;
+import com.mycompany.dbclpm.model.Compulsory;
+import com.mycompany.dbclpm.model.Member;
+import com.mycompany.dbclpm.model.Voluntary;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author v
  */
-public class KB2ThamGiaBHXHFrm extends javax.swing.JFrame {
+public class KB2BHXHBatBuocFrm extends javax.swing.JFrame {
 
     /**
      * Creates new form ThamGiaBHXH
      */
-    public KB2ThamGiaBHXHFrm() {
+    private Company company;
+    private ArrayList<KB2BHXHBatBuoc> list;
+    private ArrayList<KB2BHXHBatBuoc> lst;
+    private VungDAO vungDAO;
+    private DefaultTableModel model;
+    private MemberDAO memberDAO;
+    
+    public KB2BHXHBatBuocFrm(Company company1, ArrayList<KB2BHXHBatBuoc> list1) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.company = company1;
+        list = list1;
+        memberDAO = new MemberDAO();
+        txtName.setText(company.getName());
+        vungDAO = new VungDAO();
+        txtLocal.setText(vungDAO.getById(company.getId()).getVung());
+        txtCode.setText(company.getIdBHXH());
+        model = (DefaultTableModel) jTable1.getModel();
+        lst = new ArrayList<>();
+        for(KB2BHXHBatBuoc x : list) {
+            int ok = 1;
+            for(KB2BHXHBatBuoc y : lst) {
+                if(x.getIdMember() == y.getIdMember()) ok = 0;
+            }
+            if(ok == 1) {
+                lst.add(x);
+            }
+        }
+        filltblNguyenLieu(lst);
     }
+    
+    private void filltblNguyenLieu(ArrayList<KB2BHXHBatBuoc> list){
+        model.setNumRows(0);
+        int i = 1;
+        for(KB2BHXHBatBuoc x: list){
+//            System.out.println(x.toString());
+            Member m = memberDAO.getID(x.getIdMember());
+            System.out.println(x.getIdMember());
+            System.out.println(m.toString());
+            model.addRow(new Object[]{
+                i++,
+                m.getName(),
+                m.getIdBHXH(),
+                m.getIdNumber(),
+                vungDAO.getById(m.getIdVung()).getVung(),
+                x.getRole()
+            });
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,9 +93,11 @@ public class KB2ThamGiaBHXHFrm extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        txtName = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        txtLocal = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtCode = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,22 +108,36 @@ public class KB2ThamGiaBHXHFrm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "STT", "Họ Tên", "Mã số BH", "Mã đơn vị", "CMND", "Địa chỉ"
+                "STT", "Họ Tên", "Mã số BH", "CMND", "Địa chỉ", "Chức vụ"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Chi tiết");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Huỷ bỏ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Tên đơn vị:");
 
-        jLabel3.setText("Công ty Sông Đà");
+        txtName.setText("Công ty Sông Đà");
 
         jLabel4.setText("Địa chỉ:");
 
-        jLabel5.setText("Số 2 đường Nguyễn Trãi, Quận Thanh Xuân,Hà Nội");
+        txtLocal.setText("Số 2 đường Nguyễn Trãi, Quận Thanh Xuân,Hà Nội");
+
+        jLabel3.setText("Mã đơn vị :");
+
+        txtCode.setText("jLabel5");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,8 +161,13 @@ public class KB2ThamGiaBHXHFrm extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtLocal)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel3)
+                                .addGap(35, 35, 35)
+                                .addComponent(txtCode))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -101,10 +181,12 @@ public class KB2ThamGiaBHXHFrm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtCode))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(txtLocal)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,6 +199,28 @@ public class KB2ThamGiaBHXHFrm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int i = jTable1.getSelectedRow();
+        System.out.println("i :" + i);
+        if( i < 0) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn đơn vị cần xem chi tiết.");
+        }
+        else {
+            System.out.println(lst.get(i).toString());
+            KB2ChiTietFrm frm = new KB2ChiTietFrm(company, list, lst.get(i).getIdMember());
+            frm.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB2ChonLoaiFrm frm = new KB2ChonLoaiFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,14 +239,18 @@ public class KB2ThamGiaBHXHFrm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(KB2ThamGiaBHXHFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KB2BHXHBatBuocFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(KB2ThamGiaBHXHFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KB2BHXHBatBuocFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(KB2ThamGiaBHXHFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KB2BHXHBatBuocFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(KB2ThamGiaBHXHFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KB2BHXHBatBuocFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -151,7 +259,7 @@ public class KB2ThamGiaBHXHFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KB2ThamGiaBHXHFrm().setVisible(true);
+                new KB2BHXHBatBuocFrm(null, null).setVisible(true);
             }
         });
     }
@@ -163,8 +271,10 @@ public class KB2ThamGiaBHXHFrm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel txtCode;
+    private javax.swing.JLabel txtLocal;
+    private javax.swing.JLabel txtName;
     // End of variables declaration//GEN-END:variables
 }

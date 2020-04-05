@@ -5,6 +5,13 @@
  */
 package com.mycompany.dbclpm.view.xuatbaocao;
 
+import com.mycompany.dbclpm.DAO.MemberDAO;
+import com.mycompany.dbclpm.DAO.VungDAO;
+import com.mycompany.dbclpm.model.Company;
+import com.mycompany.dbclpm.model.Member;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author v
@@ -14,8 +21,36 @@ public class KB1ChiTietFrm extends javax.swing.JFrame {
     /**
      * Creates new form KB1ChiTietFrm
      */
-    public KB1ChiTietFrm() {
+    private ArrayList<Company> list;
+    private DefaultTableModel model;
+    private ArrayList<Member> listM;
+    private MemberDAO memberDAO;
+    private VungDAO vungDAO;
+    
+    public KB1ChiTietFrm(int k, ArrayList<Company> list) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        list = list;
+        listM = memberDAO.getListByCompany(list.get(k).getId());
+        model = (DefaultTableModel) jTable1.getModel();
+        filltblNguyenLieu(listM);
+        String temp = String.valueOf(list.size()) + " người";
+        jcb.setText(temp);
+    }
+    
+    private void filltblNguyenLieu(ArrayList<Member> list){
+        model.setNumRows(0);
+        int i = 1;
+        for(Member x: list){
+//            System.out.println(x.toString());
+            model.addRow(new Object[]{
+                i++,
+                x.getIdBHXH(),
+                x.getName(),
+                x.getIdNumber(),
+                vungDAO.getById(x.getIdVung()).getVung(),
+            });
+        }
     }
 
     /**
@@ -28,7 +63,7 @@ public class KB1ChiTietFrm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jcb = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -39,11 +74,21 @@ public class KB1ChiTietFrm extends javax.swing.JFrame {
 
         jLabel2.setText("Tổng số người tham gia :");
 
-        jLabel3.setText("0 người");
+        jcb.setText("0 người");
 
         jButton1.setText("Xác nhận");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Huỷ bỏ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -77,7 +122,7 @@ public class KB1ChiTietFrm extends javax.swing.JFrame {
                         .addGap(74, 74, 74)
                         .addComponent(jLabel2)
                         .addGap(31, 31, 31)
-                        .addComponent(jLabel3))
+                        .addComponent(jcb))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(141, 141, 141)
                         .addComponent(jButton1)
@@ -95,7 +140,7 @@ public class KB1ChiTietFrm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jcb))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -105,6 +150,18 @@ public class KB1ChiTietFrm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB1BHXHBatBuocFrm frm = new KB1BHXHBatBuocFrm(list);
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,7 +193,7 @@ public class KB1ChiTietFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KB1ChiTietFrm().setVisible(true);
+                new KB1ChiTietFrm(1, null).setVisible(true);
             }
         });
     }
@@ -146,8 +203,8 @@ public class KB1ChiTietFrm extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jcb;
     // End of variables declaration//GEN-END:variables
 }
