@@ -219,6 +219,7 @@ public class KB2ChonLoaiFrm extends javax.swing.JFrame {
             }
             this.dispose();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed

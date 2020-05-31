@@ -7,6 +7,8 @@ package com.mycompany.dbclpm.view;
 
 import com.mycompany.dbclpm.DAO.UserDAO;
 import com.mycompany.dbclpm.model.User;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -71,6 +73,11 @@ public class LoginFrm extends javax.swing.JFrame {
         });
 
         txtPassWord.setText("123456");
+        txtPassWord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassWordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,14 +134,20 @@ public class LoginFrm extends javax.swing.JFrame {
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
         if(txtUsername.getText().length() > 0 && txtPassWord.getText().length() > 0) {
-            user = userDAO.CheckUser(txtUsername.getText(), txtPassWord.getText());
-            if(user == null) {
-                JOptionPane.showMessageDialog(this, "Tên đăng nhập hoặc mật khẩu không đúng.");
-            }
-            else {
-                MenuFrm menuFrm = new MenuFrm(user);
-                this.dispose();
-                menuFrm.setVisible(true);
+            System.out.println( "this is : " + txtPassWord.getText().toString());
+            try {
+                user = userDAO.CheckUser(txtUsername.getText(), txtPassWord.getText());
+                if(user == null) {
+                    JOptionPane.showMessageDialog(this, "Tên đăng nhập hoặc mật khẩu không đúng.");
+                }
+                else {
+                    MenuFrm menuFrm = new MenuFrm(user);
+                    this.dispose();
+                    menuFrm.setVisible(true);
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+                Logger.getLogger(LoginFrm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         else {
@@ -146,6 +159,10 @@ public class LoginFrm extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnHuyBoActionPerformed
+
+    private void txtPassWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassWordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassWordActionPerformed
 
     /**
      * @param args the command line arguments

@@ -46,7 +46,6 @@ public class MucLuongFrm extends javax.swing.JFrame {
                 x.getLuongMax(),
                 x.getTiLeLD(),
                 x.getLdQuaDT(),
-                x.getLuongCB()
             });
         }
     }
@@ -73,11 +72,12 @@ public class MucLuongFrm extends javax.swing.JFrame {
         txtLuongMin = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        txtTile = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtLD = new javax.swing.JTextField();
+        txtTileLD = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,13 +110,13 @@ public class MucLuongFrm extends javax.swing.JFrame {
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Vùng", "Mức lương tối thiếu", "Mức lương tối đa", "Tỉ lệ LĐ qua đào tạo", "LĐ qua đào tạo", "Lương cơ sở"
+                "Vùng", "Mức lương tối thiếu", "Mức lương tối đa", "Tỉ lệ LĐ qua đào tạo", "LĐ qua đào tạo"
             }
         ));
         jScrollPane1.setViewportView(jTable);
@@ -133,9 +133,7 @@ public class MucLuongFrm extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Tỉ lệ qua đào tạo :");
-
-        jLabel6.setText("LĐ qua đào tạo :");
+        jLabel6.setText("Tỉ lệ LĐ qua đào tạo");
 
         jButton5.setText("Cập nhật");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +142,12 @@ public class MucLuongFrm extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("%");
+
+        jLabel7.setText("VNĐ");
+
+        jLabel8.setText("VNĐ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,7 +155,6 @@ public class MucLuongFrm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel6))
@@ -160,11 +163,15 @@ public class MucLuongFrm extends javax.swing.JFrame {
                     .addComponent(txtLuongMin)
                     .addComponent(txtVung)
                     .addComponent(txtLuongMax)
-                    .addComponent(txtTile)
-                    .addComponent(txtLD, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
+                    .addComponent(txtTileLD, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,7 +195,7 @@ public class MucLuongFrm extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(127, 127, 127)
                     .addComponent(jLabel2)
-                    .addContainerGap(479, Short.MAX_VALUE)))
+                    .addContainerGap(485, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,30 +211,30 @@ public class MucLuongFrm extends javax.swing.JFrame {
                     .addComponent(jButton5)
                     .addComponent(jButton4)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtVung, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtLuongMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLuongMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(txtLuongMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtLuongMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtTile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(13, 13, 13))
+                    .addComponent(jLabel6)
+                    .addComponent(txtTileLD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(42, 42, 42))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(376, 376, 376)
                     .addComponent(jLabel2)
-                    .addContainerGap(164, Short.MAX_VALUE)))
+                    .addContainerGap(161, Short.MAX_VALUE)))
         );
 
         pack();
@@ -242,8 +249,28 @@ public class MucLuongFrm extends javax.swing.JFrame {
             String vung = txtVung.getText(); mucluong.setVung(vung);
             int luongMin = Integer.parseInt(txtLuongMin.getText()); mucluong.setLuongMin(luongMin);
             int luongMax = Integer.parseInt(txtLuongMax.getText()); mucluong.setLuongMax(luongMax);
-            int ldQuaDT = Integer.parseInt(txtLD.getText()); mucluong.setLdQuaDT(ldQuaDT);
-            float tiLeLD = Float.parseFloat(txtTile.getText()); mucluong.setTiLeLD(tiLeLD);
+            float tile = Float.parseFloat(txtTileLD.getText()); mucluong.setTiLeLD(tile);
+            mucluong.setLdQuaDT((int) (luongMin*(100+tile)/100));
+            float tiLeLD = (float) 0.07; mucluong.setTiLeLD(tiLeLD);
+            
+            if(tiLeLD >= 100) {
+                JOptionPane.showMessageDialog(this, "Tỉ lệ lao động qua đào tạo phải nhỏ hơn 100%.");
+               return;
+            }
+            
+            if(luongMin > luongMax) {
+               JOptionPane.showMessageDialog(this, "Lương tối đa phải lớn hơn hoặc bằng lương tối thiểu.");
+               return;
+            }
+            if(luongMin < 0 ) {
+                JOptionPane.showMessageDialog(this, "Lương tối thiểu phải lớn hơn 0.");
+                return;
+            }
+            if(luongMax < 0 ) {
+                JOptionPane.showMessageDialog(this, "Lương tối đa phải lớn hơn 0.");
+                return;
+            }
+            
             mucluong = chDAO.addML(mucluong);
             list.add(mucluong);
             System.out.println(mucluong.toString());
@@ -251,7 +278,7 @@ public class MucLuongFrm extends javax.swing.JFrame {
             clearData();
         } catch (Exception e) {
             System.out.println(e);
-            JOptionPane.showMessageDialog(this, "Dữ liệu nhập sai định dạng : " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Dữ liệu nhập sai định dạng.");
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -260,8 +287,7 @@ public class MucLuongFrm extends javax.swing.JFrame {
         txtVung.setText("");
         txtLuongMin.setText("");
         txtLuongMax.setText("");
-        txtLD.setText("");
-        txtTile.setText("");
+        txtTileLD.setText("");
     }
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -294,11 +320,17 @@ public class MucLuongFrm extends javax.swing.JFrame {
         txtVung.setText(mucluong.getVung());
         txtLuongMin.setText(String.valueOf(mucluong.getLuongMin()));
         txtLuongMax.setText(String.valueOf(mucluong.getLuongMax()));
-        txtTile.setText(String.valueOf(mucluong.getTiLeLD()));
-        txtLD.setText(String.valueOf(mucluong.getLdQuaDT()));
+        txtTileLD.setText(String.valueOf(mucluong.getTiLeLD()));
         sua = 1;
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private Boolean checkMucLuong(int a, int b) {
+        if(a > b) {
+            return true;
+        }
+        return false;
+    }
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         int i = jTable.getSelectedRow();
@@ -312,9 +344,26 @@ public class MucLuongFrm extends javax.swing.JFrame {
             String vung = txtVung.getText(); mucluong.setVung(vung);
             int luongMin = Integer.parseInt(txtLuongMin.getText()); mucluong.setLuongMin(luongMin);
             int luongMax = Integer.parseInt(txtLuongMax.getText()); mucluong.setLuongMax(luongMax);
-            int ldQuaDT = Integer.parseInt(txtLD.getText()); mucluong.setLdQuaDT(ldQuaDT);
-            float tiLeLD = Float.parseFloat(txtTile.getText()); mucluong.setTiLeLD(tiLeLD);
-            System.out.println("ti le: " + tiLeLD);
+            float tiLeLD = (float) 0.07; mucluong.setTiLeLD(tiLeLD);
+            float tile = Float.parseFloat(txtTileLD.getText()); mucluong.setTiLeLD(tile);
+            mucluong.setLdQuaDT((int) (luongMin*(100+tile)/100));
+            
+            if(tiLeLD >= 100) {
+                JOptionPane.showMessageDialog(this, "Tỉ lệ lao động qua đào tạo phải nhỏ hơn 100%.");
+               return;
+            }
+            if(luongMin > luongMax) {
+               JOptionPane.showMessageDialog(this, "Lương tối đa phải lớn hơn hoặc bằng lương tối thiểu.");
+               return;
+            }
+            if(luongMin < 0 ) {
+                JOptionPane.showMessageDialog(this, "Lương tối thiểu phải lớn hơn 0.");
+                return;
+            }
+            if(luongMax < 0 ) {
+                JOptionPane.showMessageDialog(this, "Lương tối đa phải lớn hơn 0.");
+                return;
+            }
             chDAO.updateML(mucluong);
             list.set(i, mucluong);
             filltblNguyenLieu(list);
@@ -382,12 +431,13 @@ public class MucLuongFrm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
-    private javax.swing.JTextField txtLD;
     private javax.swing.JTextField txtLuongMax;
     private javax.swing.JTextField txtLuongMin;
-    private javax.swing.JTextField txtTile;
+    private javax.swing.JTextField txtTileLD;
     private javax.swing.JTextField txtVung;
     // End of variables declaration//GEN-END:variables
 }

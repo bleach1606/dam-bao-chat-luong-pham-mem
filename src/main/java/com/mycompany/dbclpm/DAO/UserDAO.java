@@ -16,7 +16,10 @@ public class UserDAO extends DAO{
         }
     }
 
-    public User CheckUser(String username, String password){
+    public User CheckUser(String username, String password) throws Exception{
+        if(checkSQl(password) || checkSQl(username)) {
+            throw new Exception("Chứa kí tự đặc biết");
+        }
         User user = null;
         String sql = "select * from tbl_user where username = ? and password = ?";
         try{

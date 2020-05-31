@@ -84,7 +84,10 @@ public class MemberDAO extends DAO{
         return list;
     }
     
-    public Member getListByID(String bhxh, String cmnd) {
+    public Member getListByID(String bhxh, String cmnd) throws Exception {
+        if(checkSQl(bhxh) || checkSQl(cmnd)) {
+            throw new Exception("Chứa kí tự đặc biết");
+        }
         Member m = null;
         String sql = "SELECT * FROM `tblmember` WHERE `id_number` = ? OR `id_BHXH` = ?";
         try {

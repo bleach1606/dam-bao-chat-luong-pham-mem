@@ -26,6 +26,18 @@ public class DAO {
 
     public DAO() {
     }
+    
+    public Boolean checkSQl(String s) {
+        s = s.toLowerCase();
+        Boolean ok = false;
+        for(int i = 0; i < s.length(); i++) {
+            if( ('a' <= s.charAt(i) && s.charAt(i) <= 'z') || ('0' <= s.charAt(i) && s.charAt(i) <= '9') ) {
+                continue;
+            }
+            ok = true;
+        }
+        return ok;
+    }
 
     public void connectToDB() throws Exception {
         try {
