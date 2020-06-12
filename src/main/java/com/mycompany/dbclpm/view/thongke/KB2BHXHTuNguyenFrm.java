@@ -29,7 +29,7 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
         list = listV;
         model = (DefaultTableModel) jTable1.getModel();
         filltblNguyenLieu(list);
-        String temp = String.valueOf(list.size()) + " người";
+        String temp = String.valueOf(list.size()) + " tháng";
         jLB.setText(temp);
     }
 
@@ -40,7 +40,7 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
 //            System.out.println(x.toString());
             model.addRow(new Object[]{
                 i++,
-                x.getTime(),
+                x.getTime().toString(),
                 x.getSalary(),
             });
         }
@@ -95,8 +95,18 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
         jLB.setText("12 tháng");
 
         jButton1.setText("Xác nhận");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Huỷ bỏ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,6 +171,18 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        KB2ChonLoaiFrm frm = new KB2ChonLoaiFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        KB2ChonLoaiFrm frm = new KB2ChonLoaiFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

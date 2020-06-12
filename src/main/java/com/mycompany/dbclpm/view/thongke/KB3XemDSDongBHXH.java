@@ -179,6 +179,7 @@ public class KB3XemDSDongBHXH extends javax.swing.JFrame {
             }
             this.dispose();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Dữ liệu nhập sai định dạng : " + e.getMessage());
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_jButton2ActionPerformed

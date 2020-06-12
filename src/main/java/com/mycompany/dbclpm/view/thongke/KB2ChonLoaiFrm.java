@@ -205,6 +205,8 @@ public class KB2ChonLoaiFrm extends javax.swing.JFrame {
                     return;
                 }
                 ArrayList<Voluntary> list = voluntatyDAO.getList(member.getId(), date1, date2);
+                System.out.println("12313123");
+                System.out.println(list.size());
                 KB2BHXHTuNguyenFrm frm = new KB2BHXHTuNguyenFrm(list);
                 frm.setVisible(true);
             } else {

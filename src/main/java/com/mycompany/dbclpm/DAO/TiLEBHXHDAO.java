@@ -93,6 +93,7 @@ public class TiLEBHXHDAO extends DAO{
             ps.setFloat(2, tile.getCaNhan());
             ps.setFloat(3, tile.getToChuc());
             ps.setInt(4, tile.getId());
+            System.out.println(ps);
             k = ps.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();

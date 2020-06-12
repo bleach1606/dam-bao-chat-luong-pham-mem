@@ -12,6 +12,7 @@ import com.mycompany.dbclpm.model.Member;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,6 +29,7 @@ public class KB1LoaiBaocaoFrm extends javax.swing.JFrame {
     
     public KB1LoaiBaocaoFrm() {
         initComponents();
+        this.setLocationRelativeTo(null);
         jcb.removeAllItems();
         jcb.addItem("BHXH tự nguyện");
         jcb.addItem("BHXH bắt buộc");
@@ -159,6 +161,8 @@ public class KB1LoaiBaocaoFrm extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        XuatBaoCaoFrm frm = new XuatBaoCaoFrm();
+        frm.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -174,16 +178,19 @@ public class KB1LoaiBaocaoFrm extends javax.swing.JFrame {
             int k = jcb.getSelectedIndex();
             if (k == 0) {
                 ArrayList<Member> list = memberDAO.getListByTime(date1, date2);
+                System.out.println(list.size());
                 KB1BHXHTuNguyenFrm frm = new KB1BHXHTuNguyenFrm(list);
                 frm.setVisible(true);
+                this.dispose();
             } else {
                 ArrayList<Company> list = companyDAO.getListByDate(date1, date2);
                 KB1BHXHBatBuocFrm frm = new KB1BHXHBatBuocFrm(list);
                 frm.setVisible(true);
+                this.dispose();
             }
-            this.dispose();
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(this, "Dữ liệu nhập sai định dạng : " + e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

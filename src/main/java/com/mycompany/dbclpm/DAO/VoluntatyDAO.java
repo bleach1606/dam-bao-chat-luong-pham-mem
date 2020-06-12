@@ -30,8 +30,9 @@ public class VoluntatyDAO extends DAO{
     }
     
     public ArrayList<Voluntary> getList(int id_company, Date time1, Date time2) {
+        System.out.println(id_company);
         ArrayList<Voluntary> list = new ArrayList<>();
-        String sql = "SELECT * FROM `tbl_pay_bhxh_voluntary` WHERE `id_member` = ? and ? <= time1 and ? <= time2";
+        String sql = "SELECT * FROM `tbl_pay_bhxh_voluntary` WHERE `id_member` = ? and ? <= time and ? >= time";
         try {
             PreparedStatement ps = connect.prepareStatement(sql);
             ps.setInt(1, id_company);
