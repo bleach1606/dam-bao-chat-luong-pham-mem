@@ -29,7 +29,8 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         list = listm;
         vungDAO = new VungDAO();
-        filltblNguyenLieu(list);
+        model = (DefaultTableModel) jTable1.getModel();
+        filltblNguyenLieu(listm);
         String temp = String.valueOf(list.size()) + " người";
         jcb.setText(temp);
     }

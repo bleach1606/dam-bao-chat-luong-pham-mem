@@ -178,7 +178,7 @@ public class KB1LoaiBaocaoFrm extends javax.swing.JFrame {
             int k = jcb.getSelectedIndex();
             if (k == 0) {
                 ArrayList<Member> list = memberDAO.getListByTime(date1, date2);
-                System.out.println(list.size());
+                System.out.println( "list size :" + list.size());
                 KB1BHXHTuNguyenFrm frm = new KB1BHXHTuNguyenFrm(list);
                 frm.setVisible(true);
                 this.dispose();

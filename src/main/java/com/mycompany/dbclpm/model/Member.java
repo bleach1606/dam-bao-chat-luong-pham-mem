@@ -94,5 +94,36 @@ public class Member {
     public String toString() {
         return "Member{" + "id=" + id + ", name=" + name + ", idNumber=" + idNumber + ", idBHXH=" + idBHXH + ", birthday=" + birthday + ", joinDate=" + joinDate + ", idVung=" + idVung + '}';
     }
+
+    public boolean equals(Member member) {
+        if (member.getId() != id) {
+            return false;
+        }
+//        if (member.getBirthday().toString().trim() != (birthday.toString().trim())) {
+//            System.out.println(member.getBirthday().toString().trim());
+//            System.out.println();
+//            return false;
+//        }
+        if (!member.getIdBHXH().trim().equals((idBHXH).trim())) {
+            System.out.println(member.getIdBHXH());
+            System.out.println(idBHXH);
+            return false;
+        }
+        if (member.getIdVung() != idVung) {
+            return false;
+        }
+//        if (member.getJoinDate().toString() != (joinDate.toString())) {
+//            return false;
+//        }
+        if (!member.getName().equals(name)) {
+            return false;
+        }
+        if (!member.getIdNumber().equals(idNumber)) {
+            return false;
+        }
+        return true;
+    }
     
+    
+
 }

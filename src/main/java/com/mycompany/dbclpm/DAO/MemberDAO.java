@@ -146,7 +146,6 @@ public class MemberDAO extends DAO{
             PreparedStatement ps = connect.prepareStatement(sql);
             ps.setDate(1, date1);
             ps.setDate(2, date2);
-            System.out.println(ps);
             ResultSet rs = ps.executeQuery();
             System.out.println(ps);
             while (rs.next()) {                

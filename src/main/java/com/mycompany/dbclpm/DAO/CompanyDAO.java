@@ -43,6 +43,7 @@ public class CompanyDAO extends DAO{
                 c.setName(rs.getString(3));
                 c.setJoinDate(rs.getDate(4));
                 c.setIdVung(rs.getInt(5));
+                c.setWorkers(rs.getInt(6));
                 System.out.println(c.toString());
             }
         } catch (Exception e) {
@@ -108,6 +109,7 @@ public class CompanyDAO extends DAO{
                 c.setName(rs.getString(3));
                 c.setJoinDate(rs.getDate(4));
                 c.setIdVung(rs.getInt(5));
+                c.setWorkers(rs.getInt(6));
                 System.out.println(c.toString());
                 list.add(c);
             }

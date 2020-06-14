@@ -92,4 +92,19 @@ public class Company {
         return "Company{" + "id=" + id + ", name=" + name + ", idBHXH=" + idBHXH + ", joinDate=" + joinDate + ", idVung=" + idVung + ", workers=" + workers + '}';
     }
 
+    public boolean equals(Company company) {
+        
+        if (company.getId() != id) 
+            return false;
+        if (!company.getIdBHXH().equals(idBHXH)) 
+            return false;
+        if (company.getIdVung() != idVung) 
+            return false;
+        if (!company.getName().equals(name)) 
+            return false;
+        if (company.getWorkers() != workers) 
+            return false;
+
+        return true;
+    }
 }

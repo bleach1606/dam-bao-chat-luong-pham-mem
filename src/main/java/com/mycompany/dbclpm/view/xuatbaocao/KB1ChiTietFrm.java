@@ -31,10 +31,13 @@ public class KB1ChiTietFrm extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         list = list;
+        memberDAO = new MemberDAO();
+        vungDAO = new VungDAO();
+        System.out.println(list.get(k).toString());
         listM = memberDAO.getListByCompany(list.get(k).getId());
         model = (DefaultTableModel) jTable1.getModel();
         filltblNguyenLieu(listM);
-        String temp = String.valueOf(list.size()) + " người";
+        String temp = String.valueOf(listM.size()) + " người";
         jcb.setText(temp);
     }
     

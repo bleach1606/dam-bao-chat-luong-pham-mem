@@ -5,6 +5,10 @@
  */
 package com.mycompany.dbclpm.baocao;
 
+import com.mycompany.dbclpm.DAO.MemberDAO;
+import com.mycompany.dbclpm.model.Member;
+import java.sql.Date;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,28 +22,56 @@ import static org.junit.Assert.*;
  */
 public class TestCase77 {
     
+    
+    private MemberDAO memberDAO;
+    
     public TestCase77() {
+        memberDAO = new MemberDAO();
     }
     
-    @BeforeClass
-    public static void setUpClass() {
+    public Date stringToDate(String s)  {
+        return Date.valueOf(s);
     }
     
-    @AfterClass
-    public static void tearDownClass() {
+    public boolean compareMember(ArrayList<Member> list1,ArrayList<Member> list2) {
+        if(list1.size() != list2.size()) return false;
+        for(int i = 0; i< list1.size(); i++) {
+            Member member1 = list1.get(i);
+            Member member2 = list2.get(i);
+            if (member1.equals(member2)) {
+                continue;
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
     
-    @Before
-    public void setUp() {
+    @Test
+    public void TestCasegetByID4() {
+        assertTrue(new Member(4, "Nguyen Van Sinh", "1111", "HD01",stringToDate("1994-02-28"), stringToDate("2019-01-01"), 1)
+                .equals(memberDAO.getID(4)));
     }
     
-    @After
-    public void tearDown() {
+    @Test
+    public void TestCasegetByID5() {
+        assertTrue(new Member(5, "Nguyen Thi Kim", "1113", "HD03",stringToDate("1995-04-03"), stringToDate("2019-05-01"), 1)
+                .equals(memberDAO.getID(5)));
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
+    @Test
+    public void TestCasegetByID8() {
+        assertTrue(new Member(8, "Luu A Binh", "1121", "CG01",stringToDate("1995-04-01"), stringToDate("2019-01-01"), 1)
+                .equals(memberDAO.getID(8)));
+    }
+    
+    @Test
+    public void TestCasegetListByCompany1() {
+        ArrayList<Member> list = new ArrayList<>();
+        list.add(new Member(4, "Nguyen Van Sinh", "1111", "HD01",stringToDate("1994-02-28"), stringToDate("2019-01-01"), 1));
+        list.add(new Member(5, "Nguyen Thi Kim", "1113", "HD03",stringToDate("1995-04-03"), stringToDate("2019-05-01"), 1));
+        list.add(new Member(8, "Luu A Binh", "1121", "CG01",stringToDate("1995-04-01"), stringToDate("2019-01-01"), 1));
+        assertTrue(compareMember(list, memberDAO.getListByCompany(1)));
+    }
+    
 }
