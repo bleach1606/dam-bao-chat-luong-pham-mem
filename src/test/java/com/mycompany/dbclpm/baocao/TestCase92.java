@@ -6,6 +6,7 @@
 package com.mycompany.dbclpm.baocao;
 
 import com.mycompany.dbclpm.DAO.MemberDAO;
+import com.mycompany.dbclpm.DAO.TMemberDAO;
 import com.mycompany.dbclpm.model.Member;
 import java.sql.Date;
 import java.text.ParseException;
