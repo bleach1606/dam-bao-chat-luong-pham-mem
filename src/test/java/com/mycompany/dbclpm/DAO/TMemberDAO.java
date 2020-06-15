@@ -91,4 +91,74 @@ public class TMemberDAO {
         ArrayList<Member> list = new ArrayList<>();
         assertTrue(compareMember(list, memberDAO.getListByCompany(3)));
     }
+    
+    @Test
+    public void TestCasegetByID4() {
+        assertTrue(new Member(4, "Nguyen Van Sinh", "1111", "HD01",stringToDate("1994-02-28"), stringToDate("2019-01-01"), 1)
+                .equals(memberDAO.getID(4)));
+    }
+    
+    @Test
+    public void TestCasegetByID5() {
+        assertTrue(new Member(5, "Nguyen Thi Kim", "1113", "HD03",stringToDate("1995-04-03"), stringToDate("2019-05-01"), 1)
+                .equals(memberDAO.getID(5)));
+    }
+    
+    @Test
+    public void TestCasegetByID8() {
+        assertTrue(new Member(8, "Luu A Binh", "1121", "CG01",stringToDate("1995-04-01"), stringToDate("2019-01-01"), 1)
+                .equals(memberDAO.getID(8)));
+    }
+    
+    @Test
+    public void TestCasegetByID10() {
+        assertTrue(new Member(10, "Nguyen Thi Binh", "1123", "CG03",stringToDate("1995-01-02"), stringToDate("2019-06-01"), 1)
+                .equals(memberDAO.getID(10)));
+    }
+    
+    @Test
+    public void TestCasegetByID11() {
+        assertTrue(new Member(11, "Nguyen Thi Binh", "1131", "TX01",stringToDate("1995-01-01"), stringToDate("2019-06-01"), 1)
+                .equals(memberDAO.getID(11)));
+    }
+    
+    @Test
+    public void TestCasegetByID12() {
+        assertTrue(new Member(13, "Nguyen Thi Anh", "1133", "TX03",stringToDate("1995-01-03"), stringToDate("2019-06-01"), 1)
+                .equals(memberDAO.getID(13)));
+    }
+    
+    @Test
+    public void TestCasegetByID6() {
+        assertTrue(new Member(6, "Luu Quang Anh", "1114", "HD04",stringToDate("1995-01-09"), stringToDate("2019-05-01"), 1)
+                .equals(memberDAO.getID(6)));
+    }
+    
+    @Test
+    public void TestCasegetByID7() {
+        assertTrue(new Member(7, "Le Quang Ninh", "1115", "HD05",stringToDate("1991-12-03"), stringToDate("2019-01-01"), 1)
+                .equals(memberDAO.getID(7)));
+    }
+    
+    @Test
+    public void TestCasegetByID9() {
+        assertTrue(new Member(9, "Pham Van Tinh", "1122", "CG02",stringToDate("1995-01-01"), stringToDate("2019-02-01"), 1)
+                .equals(memberDAO.getID(9)));
+    }
+    
+    @Test
+    public void TestCaseGetListByTimeIn() {
+        ArrayList<Member> list = new ArrayList<>();
+        list.add(new Member(6, "Luu Quang Anh", "1114", "HD04",stringToDate("1995-01-09"), stringToDate("2019-05-01"), 1));
+        list.add(new Member(7, "Le Quang Ninh", "1115", "HD05",stringToDate("1991-12-03"), stringToDate("2019-01-01"), 1));
+        list.add(new Member(9, "Pham Van Tinh", "1122", "CG02",stringToDate("1995-01-01"), stringToDate("2019-02-01"), 1));
+        list.add(new Member(13, "Nguyen Thi Anh", "1133", "TX03",stringToDate("1995-01-03"), stringToDate("2019-06-01"), 1));
+        assertTrue(compareMember(list, memberDAO.getListByTime(stringToDate("2019-01-01"), stringToDate("2019-12-31"))));
+    }
+    
+    @Test
+    public void TestGetListByTimeOut() {
+        ArrayList<Member> list = new ArrayList<>();
+        assertTrue(compareMember(list, memberDAO.getListByTime(stringToDate("2018-01-01"), stringToDate("2018-12-31"))));
+    }
 }
