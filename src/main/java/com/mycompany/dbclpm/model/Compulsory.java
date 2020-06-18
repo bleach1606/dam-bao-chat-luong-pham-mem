@@ -17,7 +17,15 @@ public class Compulsory {
     private int status;
     private int id_company;
 
+    public static Date stringToDate(String s)  {
+        return Date.valueOf(s);
+    }
+    
     public Compulsory() {
+        this.id = 0;
+        this.time = stringToDate("0000-01-01");
+        this.status = 0;
+        this.id_company = 0;
     }
 
     public Compulsory(int id, Date time, int status, int id_company) {

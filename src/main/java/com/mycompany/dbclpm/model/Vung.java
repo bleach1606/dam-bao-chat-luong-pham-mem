@@ -14,6 +14,8 @@ public class Vung {
     private String vung;
 
     public Vung() {
+        this.id = 0;
+        this.vung = "";
     }
 
     public Vung(int id, String vung) {

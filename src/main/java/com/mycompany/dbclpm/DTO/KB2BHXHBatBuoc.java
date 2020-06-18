@@ -16,8 +16,16 @@ public class KB2BHXHBatBuoc {
     private String role;
     private int idMember;
     private Date time;
+    
+    public static Date stringToDate(String s)  {
+        return Date.valueOf(s);
+    }
 
     public KB2BHXHBatBuoc() {
+        this.salary = 0;
+        this.role = "";
+        this.idMember = 0;
+        this.time = stringToDate("0000-01-01");
     }
 
     public KB2BHXHBatBuoc(int salary, String role, int idMember) {
