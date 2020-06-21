@@ -67,6 +67,7 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Danh sách BHXH tự nguyện quận/huyện Hà Nội");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -130,7 +131,7 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();

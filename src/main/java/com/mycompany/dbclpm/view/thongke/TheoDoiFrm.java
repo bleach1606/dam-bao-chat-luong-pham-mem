@@ -67,6 +67,7 @@ public class TheoDoiFrm extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Chọn loại theo dõi");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

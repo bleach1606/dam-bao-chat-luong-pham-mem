@@ -19,6 +19,13 @@ public class CHMucLuongBHXH {
     private int luongCB;
 
     public CHMucLuongBHXH() {
+        this.id = 0;
+        this.vung = "";
+        this.luongMin = 0;
+        this.luongMax = 0;
+        this.tiLeLD = 0;
+        this.ldQuaDT = 0;
+        this.luongCB = 0;
     }
 
     public CHMucLuongBHXH(int id, String vung, int luongMin, int luongMax, float tiLeLD, int ldQuaDT, int luongCB) {
@@ -31,6 +38,15 @@ public class CHMucLuongBHXH {
         this.luongCB = luongCB;
     }
 
+    public CHMucLuongBHXH(String vung, int luongMin, int luongMax, float tiLeLD, int ldQuaDT, int luongCB) {
+        this.vung = vung;
+        this.luongMin = luongMin;
+        this.luongMax = luongMax;
+        this.tiLeLD = tiLeLD;
+        this.ldQuaDT = ldQuaDT;
+        this.luongCB = luongCB;
+    }
+    
     public String getVung() {
         return vung;
     }

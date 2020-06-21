@@ -17,8 +17,17 @@ public class Voluntary {
     private Date time;
     private int status;
     private int id_member;
+    
+    public static Date stringToDate(String s)  {
+        return Date.valueOf(s);
+    }
 
     public Voluntary() {
+        this.id = 0;
+        this.salary = 0;
+        this.time = stringToDate("0000-01-01");
+        this.status = 0;
+        this.id_member = 0;
     }
 
     public Voluntary(int id, int salary, Date time, int status, int id_member) {

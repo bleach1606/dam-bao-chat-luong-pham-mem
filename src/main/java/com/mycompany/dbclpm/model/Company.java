@@ -18,8 +18,18 @@ public class Company {
     private Date joinDate;
     private int idVung;
     private int workers;
+    
+    public static Date stringToDate(String s)  {
+        return Date.valueOf(s);
+    }
 
     public Company() {
+        this.id = 0;
+        this.name = "";
+        this.idBHXH = "";
+        this.joinDate = stringToDate("0000-01-01");
+        this.idVung = 0;
+        this.workers = 0;
     }
 
     public Company(int id, String name, String idBHXH, Date joinDate, int idVung) {

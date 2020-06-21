@@ -71,6 +71,7 @@ public class MenuFrm extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Trang chủ");
         jLabel1.setSize(new java.awt.Dimension(45, 20));
 

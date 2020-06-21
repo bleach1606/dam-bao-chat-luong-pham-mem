@@ -73,7 +73,8 @@ public class KB2ChonLoaiFrm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Xem tổ chức tham gia BHXH bắt buộc/ cá nhân tham gia BHXH tự nguyện");
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel1.setText("Tổ chức/cá nhân tham gia BHXH");
 
         jLabel2.setText("Mã đơn vị/mã số BHXH: ");
 
@@ -144,16 +145,16 @@ public class KB2ChonLoaiFrm extends javax.swing.JFrame {
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(28, 28, 28))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(87, 87, 87)
                         .addComponent(jLabel1)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -177,7 +178,7 @@ public class KB2ChonLoaiFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -200,7 +201,7 @@ public class KB2ChonLoaiFrm extends javax.swing.JFrame {
             int k = jcb.getSelectedIndex();
             if (k == 0) {
                 Member member = memberDAO.getListByID(txtCode.getText(), txtCMND.getText());
-                if(member == null) {
+                if(member == null || member.getId() == 0)  {
                     JOptionPane.showMessageDialog(this, "Không tìm thấy thông tin cá nhân !!!");
                     return;
                 }
@@ -211,7 +212,7 @@ public class KB2ChonLoaiFrm extends javax.swing.JFrame {
                 frm.setVisible(true);
             } else {
                 Company company = companyDAO.getByCOde(txtCode.getText());
-                if(company == null) {
+                if(company == null || company.getId() == 0) {
                     JOptionPane.showMessageDialog(this, "Không tìm thấy thông tin công ty !!!");
                     return;
                 }

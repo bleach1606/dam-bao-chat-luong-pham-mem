@@ -79,6 +79,7 @@ public class KB3BHXHTuNguyenFrm extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(0).setMaxWidth(40);
         }
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Danh sách đóng Bảo hiểm xã hội tự nguyện");
 
         jButton1.setText("Xác nhận");
@@ -126,7 +127,7 @@ public class KB3BHXHTuNguyenFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
