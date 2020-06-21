@@ -15,6 +15,9 @@ public class User {
     private String password;
 
     public User() {
+        this.id = 0;
+        this.password = "";
+        this.username = "";
     }
 
     public int getId() {
@@ -51,5 +54,18 @@ public class User {
     public String toString() {
         return "User{" + "id=" + id + ", username=" + username + ", password=" + password + '}';
     }
+
+    public boolean equals(User user) {
+        if(user == null) return false;
+        if (0 == user.getId() ||user.id != id) 
+            return false;
+        if (user.getPassword() == "" || !user.getPassword().equals(password)) 
+            return false;
+        if (user.getUsername() == "" || !user.getUsername().equals(username)) 
+            return false;
+        return true;
+    }
+    
+    
 
 }

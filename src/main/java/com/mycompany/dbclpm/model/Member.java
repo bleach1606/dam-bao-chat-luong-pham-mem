@@ -112,9 +112,9 @@ public class Member {
         if (member.getIdVung() != idVung) {
             return false;
         }
-//        if (member.getJoinDate().toString() != (joinDate.toString())) {
-//            return false;
-//        }
+        if (member.getJoinDate().toString() == null ? (joinDate.toString()) != null : !member.getJoinDate().toString().equals(joinDate.toString())) {
+            return false;
+        }
         if (!member.getName().equals(name)) {
             return false;
         }
