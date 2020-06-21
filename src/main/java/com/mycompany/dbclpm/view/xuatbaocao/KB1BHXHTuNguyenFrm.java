@@ -7,6 +7,7 @@ package com.mycompany.dbclpm.view.xuatbaocao;
 
 import com.mycompany.dbclpm.DAO.VungDAO;
 import com.mycompany.dbclpm.model.Member;
+import com.mycompany.dbclpm.view.thongke.KB1ThamGiaVungFrm;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -94,8 +95,18 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
         jcb.setText("0 người");
 
         jButton1.setText("Xác nhận");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Huỷ bỏ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,6 +153,20 @@ public class KB1BHXHTuNguyenFrm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB1LoaiBaocaoFrm frm = new KB1LoaiBaocaoFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        KB1LoaiBaocaoFrm frm = new KB1LoaiBaocaoFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

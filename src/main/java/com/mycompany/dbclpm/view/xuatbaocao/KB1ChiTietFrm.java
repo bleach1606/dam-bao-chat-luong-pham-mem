@@ -159,13 +159,14 @@ public class KB1ChiTietFrm extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        KB1BHXHBatBuocFrm frm = new KB1BHXHBatBuocFrm(list);
+        KB1LoaiBaocaoFrm frm = new KB1LoaiBaocaoFrm();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        KB1LoaiBaocaoFrm frm = new KB1LoaiBaocaoFrm();
+        frm.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
