@@ -23,7 +23,7 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
     private ArrayList<Voluntary> list;
     private DefaultTableModel model;
     
-    public KB2BHXHTuNguyenFrm(ArrayList<Voluntary> listV) {
+    public KB2BHXHTuNguyenFrm(Member member, ArrayList<Voluntary> listV) {
         initComponents();
         this.setLocationRelativeTo(null);
         list = listV;
@@ -31,6 +31,7 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
         filltblNguyenLieu(list);
         String temp = String.valueOf(list.size()) + " tháng";
         jLB.setText(temp);
+        jLabel3.setText(member.getName());
     }
 
     private void filltblNguyenLieu(ArrayList<Voluntary> list){
@@ -78,7 +79,7 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
 
         jLabel4.setText("Quận/Huyện :");
 
-        jLabel5.setText("Quận Đống Đa, Hà Nội");
+        jLabel5.setText("Ha Dong, Ha Noi");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -170,12 +171,14 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         KB2ChonLoaiFrm frm = new KB2ChonLoaiFrm();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         KB2ChonLoaiFrm frm = new KB2ChonLoaiFrm();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -210,7 +213,7 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KB2BHXHTuNguyenFrm(null).setVisible(true);
+                new KB2BHXHTuNguyenFrm(null ,null).setVisible(true);
             }
         });
     }

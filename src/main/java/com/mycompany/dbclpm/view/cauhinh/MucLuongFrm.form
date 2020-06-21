@@ -33,11 +33,9 @@
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="txtVung" pref="208" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtLuongMin" max="32767" attributes="0"/>
-                      <Component id="txtLuongMax" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtTileLD" pref="208" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="txtLuongMin" max="32767" attributes="0"/>
+                  <Component id="txtLuongMax" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtTileLD" pref="208" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -149,6 +147,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLuongMax">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLuongMaxActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>

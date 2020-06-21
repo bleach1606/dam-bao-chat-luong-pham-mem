@@ -34,6 +34,7 @@ public class KB2BHXHBatBuocFrm extends javax.swing.JFrame {
         list = companyDAO.getList(vung.getId());
         model = (DefaultTableModel) jTable1.getModel();
         filltblNguyenLieu(list);
+        jcb.setText(list.size() + " Đơn vị.");
     }
     
     private void filltblNguyenLieu(ArrayList<Company> list){
@@ -60,7 +61,7 @@ public class KB2BHXHBatBuocFrm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jcb = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -71,7 +72,7 @@ public class KB2BHXHBatBuocFrm extends javax.swing.JFrame {
 
         jLabel2.setText("Tổng số đơn vị tham gia :");
 
-        jLabel3.setText("0 người");
+        jcb.setText("0 người");
 
         jButton1.setText("Xác nhận");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +115,7 @@ public class KB2BHXHBatBuocFrm extends javax.swing.JFrame {
                         .addGap(74, 74, 74)
                         .addComponent(jLabel2)
                         .addGap(31, 31, 31)
-                        .addComponent(jLabel3))
+                        .addComponent(jcb))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(141, 141, 141)
                         .addComponent(jButton1)
@@ -139,7 +140,7 @@ public class KB2BHXHBatBuocFrm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jcb))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -166,7 +167,7 @@ public class KB2BHXHBatBuocFrm extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        XuatBaoCaoFrm frm = new XuatBaoCaoFrm();
+        KB2LoaiDoanhSoFrm frm = new KB2LoaiDoanhSoFrm("");
         frm.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -210,8 +211,8 @@ public class KB2BHXHBatBuocFrm extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jcb;
     // End of variables declaration//GEN-END:variables
 }

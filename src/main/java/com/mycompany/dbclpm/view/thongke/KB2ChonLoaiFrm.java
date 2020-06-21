@@ -186,9 +186,13 @@ public class KB2ChonLoaiFrm extends javax.swing.JFrame {
                     return;
                 }
                 ArrayList<Voluntary> list = voluntatyDAO.getList(member.getId(), date1, date2);
+                if (list.size() == 0) {
+                    JOptionPane.showMessageDialog(this, "Không tham gia bảo hiểm xã hội tự nguyện !!!");
+                    return;
+                }
                 System.out.println("12313123");
                 System.out.println(list.size());
-                KB2BHXHTuNguyenFrm frm = new KB2BHXHTuNguyenFrm(list);
+                KB2BHXHTuNguyenFrm frm = new KB2BHXHTuNguyenFrm(member ,list);
                 frm.setVisible(true);
             } else {
                 Company company = companyDAO.getByCOde(txtCode.getText());

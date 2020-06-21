@@ -157,12 +157,14 @@ public class KB2BHXHTuNguyenFrm extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        KB2LoaiDoanhSoFrm frm = new KB2LoaiDoanhSoFrm("Xem báo cáo theo quận huyện");
+        frm.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        XuatBaoCaoFrm frm = new XuatBaoCaoFrm();
+        KB2LoaiDoanhSoFrm frm = new KB2LoaiDoanhSoFrm("Xem báo cáo theo quận huyện");
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

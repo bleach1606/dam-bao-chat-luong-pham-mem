@@ -86,7 +86,7 @@ public class TiLEBHXHDAO extends DAO{
 
     public int updateML(TiLeBHXH tile) {
         int k = -1;
-        String sql = "UPDATE `tbl_tile` SET `ca_nhan`= ?,`to_chuc`= ? WHERE ?";
+        String sql = "UPDATE `tbl_tile` SET `ca_nhan`= ?,`to_chuc`= ? WHERE id = ?";
         try{
             PreparedStatement ps = connect.prepareStatement(sql);
             ps.setFloat(1, tile.getCaNhan());

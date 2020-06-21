@@ -95,6 +95,12 @@ public class MucLuongFrm extends javax.swing.JFrame {
             }
         });
 
+        txtLuongMax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLuongMaxActionPerformed(evt);
+            }
+        });
+
         jButton4.setText("Huỷ bỏ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,10 +168,9 @@ public class MucLuongFrm extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtVung, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtLuongMin)
-                        .addComponent(txtLuongMax)
-                        .addComponent(txtTileLD, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)))
+                    .addComponent(txtLuongMin)
+                    .addComponent(txtLuongMax)
+                    .addComponent(txtTileLD, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -251,10 +256,9 @@ public class MucLuongFrm extends javax.swing.JFrame {
             String vung = txtVung.getText(); mucluong.setVung(vung);
             int luongMin = Integer.parseInt(txtLuongMin.getText()); mucluong.setLuongMin(luongMin);
             int luongMax = Integer.parseInt(txtLuongMax.getText()); mucluong.setLuongMax(luongMax);
-            float tile = Float.parseFloat(txtTileLD.getText()); mucluong.setTiLeLD(tile);
-            mucluong.setLdQuaDT((int) (luongMin*(100+tile)/100));
-            float tiLeLD = (float) 0.07; mucluong.setTiLeLD(tiLeLD);
             
+            float tiLeLD = Float.parseFloat(txtTileLD.getText()); mucluong.setTiLeLD(tiLeLD);
+            mucluong.setLdQuaDT((int) (luongMin*(100+tiLeLD)/100));
             if(tiLeLD >= 100) {
                 JOptionPane.showMessageDialog(this, "Tỉ lệ lao động qua đào tạo phải nhỏ hơn 100%.");
                return;
@@ -384,6 +388,10 @@ public class MucLuongFrm extends javax.swing.JFrame {
         CauHinhFrm cauHinhFrm = new CauHinhFrm();
         cauHinhFrm.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void txtLuongMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLuongMaxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLuongMaxActionPerformed
 
     /**
      * @param args the command line arguments
