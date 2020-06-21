@@ -141,7 +141,7 @@ public class MemberDAO extends DAO{
     public ArrayList<Member> getListByTime(Date date1, Date date2) {
         ArrayList<Member> list = new ArrayList<>();
         
-        String sql = "SELECT DISTINCT id_member FROM `tbl_pay_bhxh_voluntary` WHERE ? <= time AND  `time` <= ? AND status = 0;";
+        String sql = "SELECT DISTINCT id_member FROM `tbl_pay_bhxh_voluntary` WHERE ? <= time AND  `time` <= ? AND status = 1;";
         try {
             PreparedStatement ps = connect.prepareStatement(sql);
             ps.setDate(1, date1);

@@ -27,6 +27,21 @@ public class TiLeBHXH {
         this.tong = tong;
     }
 
+    public TiLeBHXH(int id, float caNhan, float toChuc) {
+        this.id = id;
+        this.caNhan = caNhan;
+        this.toChuc = toChuc;
+    }
+    
+    public TiLeBHXH(int id, String loaiBHXH, float caNhan, float toChuc) {
+        this.id = id;
+        this.loaiBHXH = loaiBHXH;
+        this.caNhan = caNhan;
+        this.toChuc = toChuc;
+        this.tong = caNhan + toChuc;
+    }
+
+    
     public int getId() {
         return id;
     }
