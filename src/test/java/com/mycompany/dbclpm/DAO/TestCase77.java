@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.dbclpm.baocao;
+package com.mycompany.dbclpm.DAO;
 
 import com.mycompany.dbclpm.DAO.MemberDAO;
 import com.mycompany.dbclpm.DAO.TMemberDAO;
@@ -21,11 +21,12 @@ import static org.junit.Assert.*;
  *
  * @author v
  */
-public class TestCase78 {
+public class TestCase77 {
+    
     
     private MemberDAO memberDAO;
     
-    public TestCase78() {
+    public TestCase77() {
         memberDAO = new MemberDAO();
     }
     
@@ -48,29 +49,30 @@ public class TestCase78 {
     }
     
     @Test
-    public void TestCasegetByID10() {
-        assertTrue(new Member(10, "Nguyen Thi Binh", "1123", "CG03",stringToDate("1995-01-02"), stringToDate("2019-06-01"), 1)
-                .equals(memberDAO.getID(10)));
+    public void TestCasegetByID4() {
+        assertTrue(new Member(4, "Nguyen Van Sinh", "1111", "HD01",stringToDate("1994-02-28"), stringToDate("2019-01-01"), 1)
+                .equals(memberDAO.getID(4)));
     }
     
     @Test
-    public void TestCasegetByID11() {
-        assertTrue(new Member(11, "Nguyen Thi Binh", "1131", "TX01",stringToDate("1995-01-01"), stringToDate("2019-06-01"), 1)
-                .equals(memberDAO.getID(11)));
+    public void TestCasegetByID5() {
+        assertTrue(new Member(5, "Nguyen Thi Kim", "1113", "HD03",stringToDate("1995-04-03"), stringToDate("2019-05-01"), 1)
+                .equals(memberDAO.getID(5)));
     }
     
     @Test
-    public void TestCasegetByID12() {
-        assertTrue(new Member(13, "Nguyen Thi Anh", "1133", "TX03",stringToDate("1995-01-03"), stringToDate("2019-06-01"), 1)
-                .equals(memberDAO.getID(13)));
+    public void TestCasegetByID8() {
+        assertTrue(new Member(8, "Luu A Binh", "1121", "CG01",stringToDate("1995-04-01"), stringToDate("2019-01-01"), 1)
+                .equals(memberDAO.getID(8)));
     }
     
     @Test
     public void TestCasegetListByCompany1() {
         ArrayList<Member> list = new ArrayList<>();
-        list.add(new Member(10, "Nguyen Thi Binh", "1123", "CG03",stringToDate("1995-01-02"), stringToDate("2019-06-01"), 1));
-        list.add(new Member(11, "Nguyen Thi Binh", "1131", "TX01",stringToDate("1995-01-01"), stringToDate("2019-06-01"), 1));
-        list.add(new Member(12, "Nguyen Thu Thuy", "1132", "TX02",stringToDate("1995-01-02"), stringToDate("2019-09-01"), 1));
-        assertTrue(compareMember(list, memberDAO.getListByCompany(2)));
+        list.add(new Member(4, "Nguyen Van Sinh", "1111", "HD01",stringToDate("1994-02-28"), stringToDate("2019-01-01"), 1));
+        list.add(new Member(5, "Nguyen Thi Kim", "1113", "HD03",stringToDate("1995-04-03"), stringToDate("2019-05-01"), 1));
+        list.add(new Member(8, "Luu A Binh", "1121", "CG01",stringToDate("1995-04-01"), stringToDate("2019-01-01"), 1));
+        assertTrue(compareMember(list, memberDAO.getListByCompany(1)));
     }
+    
 }
