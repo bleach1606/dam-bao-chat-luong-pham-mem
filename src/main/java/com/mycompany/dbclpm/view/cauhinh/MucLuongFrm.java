@@ -264,6 +264,11 @@ public class MucLuongFrm extends javax.swing.JFrame {
                return;
             }
             
+            if (vung == null || vung.length() == 0) {
+                JOptionPane.showMessageDialog(this, "Vùng không thể bỏ trống.");
+               return;
+            }
+            
             if(luongMin > luongMax) {
                JOptionPane.showMessageDialog(this, "Lương tối đa phải lớn hơn hoặc bằng lương tối thiểu.");
                return;
@@ -350,11 +355,10 @@ public class MucLuongFrm extends javax.swing.JFrame {
             String vung = txtVung.getText(); mucluong.setVung(vung);
             int luongMin = Integer.parseInt(txtLuongMin.getText()); mucluong.setLuongMin(luongMin);
             int luongMax = Integer.parseInt(txtLuongMax.getText()); mucluong.setLuongMax(luongMax);
-            float tiLeLD = (float) 0.07; mucluong.setTiLeLD(tiLeLD);
             float tile = Float.parseFloat(txtTileLD.getText()); mucluong.setTiLeLD(tile);
             mucluong.setLdQuaDT((int) (luongMin*(100+tile)/100));
             
-            if(tiLeLD >= 100) {
+            if(tile >= 100) {
                 JOptionPane.showMessageDialog(this, "Tỉ lệ lao động qua đào tạo phải nhỏ hơn 100%.");
                return;
             }
