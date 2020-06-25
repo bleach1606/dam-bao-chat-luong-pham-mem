@@ -5,15 +5,9 @@
  */
 package com.mycompany.dbclpm.DAO;
 
-import com.mycompany.dbclpm.DAO.MemberDAO;
-import com.mycompany.dbclpm.DAO.TMemberDAO;
 import com.mycompany.dbclpm.model.Member;
 import java.sql.Date;
 import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

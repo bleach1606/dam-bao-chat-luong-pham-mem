@@ -7,12 +7,14 @@ package com.mycompany.dbclpm.DAO;
 
 import static com.mycompany.dbclpm.DAO.DAO.connect;
 import com.mycompany.dbclpm.model.TiLeBHXH;
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  *
@@ -72,6 +74,33 @@ public class TTiLeBHXHDAO {
                 return false;
         }
         return true;
+    }
+    
+    // Ngoại lệ thêm 1 phân tử null
+    @Test(expected = Exception.class)
+    public void AddEX1() throws Exception {
+        tiLEBHXHDAO.addTL(null);
+    }
+    
+    //Update nhưng ko có giá trị
+    @Test(expected = Exception.class)
+    public void AddEX2() throws Exception {
+        tiLEBHXHDAO.updateML(null);
+    }
+    
+    @Test(expected = java.lang.Error.class)
+    public void AddEX3() throws Exception {
+        tiLEBHXHDAO.addTL(new TiLeBHXH());
+    }
+    
+    @Test(expected = java.lang.Error.class)
+    public void AddEX4() throws Exception {
+        tiLEBHXHDAO.addTL(new TiLeBHXH(0, 0, 0));
+    }
+    
+    @Test(expected = java.lang.Error.class)
+    public void AddEX5() throws Exception {
+        tiLEBHXHDAO.addTL(new TiLeBHXH(0, null, 0, 0));
     }
     
 }

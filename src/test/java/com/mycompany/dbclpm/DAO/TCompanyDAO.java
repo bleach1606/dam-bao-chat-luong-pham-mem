@@ -56,14 +56,14 @@ public class TCompanyDAO {
     
     @Test
     public void TestCaseGetById1() {
-        Company c1 = new Company(1,"Samsung","CT01",stringToDate("2019-01-01"),1,0);
+        Company c1 = new Company(1,"Samsung","CT01",stringToDate("2019-01-01"),1 ,3);
         Company c2 = companyDAO.getById(1);
         assertTrue(compareCompany(c1, c2));
     }
     
     @Test
     public void TestCaseGetById2() {
-        assertTrue(compareCompany(new Company(2,"Blameo","CT02",stringToDate("2019-06-01"),1,0), companyDAO.getById(2)));
+        assertTrue(compareCompany(new Company(2,"Blameo","CT02",stringToDate("2019-06-01"),1,3), companyDAO.getById(2)));
     }
     
     @Test
@@ -84,8 +84,8 @@ public class TCompanyDAO {
     @Test
     public void TestCaseGetListByIdVung1() {
         ArrayList<Company> companys = new ArrayList<>();
-        companys.add(new Company(1,"Samsung","CT01",stringToDate("2019-01-01"),1,0));
-        companys.add(new Company(2,"Blameo","CT02",stringToDate("2019-06-01"),1,0));
+        companys.add(new Company(1,"Samsung","CT01",stringToDate("2019-01-01"),1,3));
+        companys.add(new Company(2,"Blameo","CT02",stringToDate("2019-06-01"),1,3));
         assertTrue(compareListCompany(companys, companyDAO.getList(1)));
     }
     
@@ -98,8 +98,8 @@ public class TCompanyDAO {
     @Test
     public void TestCaseGetListByDate() {
         ArrayList<Company> companys = new ArrayList<>();
-        companys.add(new Company(1,"Samsung","CT01",stringToDate("2019-01-01"),1,0));
-        companys.add(new Company(2,"Blameo","CT02",stringToDate("2019-06-01"),1,0));
+        companys.add(new Company(1,"Samsung","CT01",stringToDate("2019-01-01"),1,3));
+        companys.add(new Company(2,"Blameo","CT02",stringToDate("2019-06-01"),1,3));
         assertTrue(compareListCompany(companys, companyDAO.getListByDate(stringToDate("2019-01-01"),stringToDate("2019-12-01"))));
     }
     

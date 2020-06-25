@@ -5,8 +5,6 @@
  */
 package com.mycompany.dbclpm.DAO;
 
-import com.mycompany.dbclpm.DAO.MemberDAO;
-import com.mycompany.dbclpm.DAO.TMemberDAO;
 import com.mycompany.dbclpm.model.Member;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -19,7 +17,7 @@ import org.junit.Test;
  */
 public class TestCase89 {
     
-    private MemberDAO memberDAO;
+    private final MemberDAO memberDAO;
     
     public Date stringToDate(String s)  {
         return Date.valueOf(s);

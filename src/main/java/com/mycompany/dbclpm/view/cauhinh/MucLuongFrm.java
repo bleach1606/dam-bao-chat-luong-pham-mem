@@ -265,7 +265,7 @@ public class MucLuongFrm extends javax.swing.JFrame {
             }
             
             if (vung == null || vung.length() == 0) {
-                JOptionPane.showMessageDialog(this, "Vùng không thể bỏ trống.");
+                JOptionPane.showMessageDialog(this, "Dữ liệu nhập sai định dạng.");
                return;
             }
             
@@ -288,7 +288,6 @@ public class MucLuongFrm extends javax.swing.JFrame {
             filltblNguyenLieu(list);
             clearData();
         } catch (Exception e) {
-            System.out.println(e);
             JOptionPane.showMessageDialog(this, "Dữ liệu nhập sai định dạng.");
         }
         

@@ -65,8 +65,8 @@ public class TiLEBHXHDAO extends DAO{
             if (rs.next()) {
                 k = rs.getInt(1);
             }
-        }catch(SQLException e){
-            e.printStackTrace();
+        }catch(SQLException e){          
+            throw new Error(e.getNextException());
         }
         return k;
     }
@@ -80,6 +80,7 @@ public class TiLEBHXHDAO extends DAO{
             ok = ps.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
+            throw new Error(e.getNextException());
         }
         return ok;
     }
@@ -92,10 +93,10 @@ public class TiLEBHXHDAO extends DAO{
             ps.setFloat(1, tile.getCaNhan());
             ps.setFloat(2, tile.getToChuc());
             ps.setInt(3, tile.getId());
-            System.out.println(ps);
             k = ps.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
+            throw new Error(e.getNextException());
         }
         return k;
     }
@@ -103,8 +104,6 @@ public class TiLEBHXHDAO extends DAO{
     public static void main(String[] args) throws Exception {
         TiLEBHXHDAO test = new TiLEBHXHDAO();
         System.out.println(test.addTL(new TiLeBHXH(1, "cá nhân", 1, 0, 0)));
-//        System.out.println(test.deleteML(2));
-//        System.out.println(test.updateML(new CHMucLuongBHXH(3, "3", 0, 123, 0, 0, 123)));
     }
     
 }
